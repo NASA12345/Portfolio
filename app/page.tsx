@@ -16,6 +16,15 @@ import ScrollToTop from "@/components/scroll-to-top"
 export default function Home() {
   // Handle smooth scrolling for anchor links
   useEffect(() => {
+    // Set the initial active section to "home"
+    const setInitialActiveSection = () => {
+      const homeSection = document.getElementById("home")
+      if (homeSection) {
+        const event = new Event("scroll")
+        window.dispatchEvent(event)
+      }
+    }
+
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement
       const anchor = target.closest("a")
@@ -38,7 +47,28 @@ export default function Home() {
       }
     }
 
+    // Handle initial hash navigation
+    const handleInitialHashNavigation = () => {
+      // Check if there's a hash in the URL on page load
+      if (window.location.hash) {
+        const id = window.location.hash.substring(1)
+        const element = document.getElementById(id)
+
+        if (element) {
+          // Add a slight delay to ensure all components are rendered
+          setTimeout(() => {
+            window.scrollTo({
+              top: element.offsetTop - 80,
+              behavior: "smooth",
+            })
+          }, 100)
+        }
+      }
+    }
+
     document.addEventListener("click", handleAnchorClick)
+    handleInitialHashNavigation()
+    setInitialActiveSection()
 
     return () => {
       document.removeEventListener("click", handleAnchorClick)

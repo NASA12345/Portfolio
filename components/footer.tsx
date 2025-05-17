@@ -1,7 +1,23 @@
-import Link from "next/link"
+"use client"
+
 import { Github, Linkedin } from "lucide-react"
 
 export default function Footer() {
+  // Function to handle smooth scrolling
+  const scrollToSection = (sectionId: string) => {
+    const targetElement = document.getElementById(sectionId)
+    if (targetElement) {
+      // Scroll to the target element with smooth behavior
+      window.scrollTo({
+        top: targetElement.offsetTop - 80, // Offset for navbar
+        behavior: "smooth",
+      })
+
+      // Update URL without causing a page reload
+      window.history.pushState(null, "", `#${sectionId}`)
+    }
+  }
+
   return (
     <footer className="bg-gray-900 text-white py-10">
       <div className="container mx-auto px-4">
@@ -10,7 +26,7 @@ export default function Footer() {
           <p className="text-gray-400 mb-6">Computer Science Student & Developer</p>
 
           <div className="flex justify-center space-x-6 mb-8">
-            <Link
+            <a
               href="https://github.com/NASA12345"
               target="_blank"
               rel="noopener noreferrer"
@@ -18,8 +34,8 @@ export default function Footer() {
             >
               <Github className="h-6 w-6" />
               <span className="sr-only">GitHub</span>
-            </Link>
-            <Link
+            </a>
+            <a
               href="https://www.linkedin.com/in/nayan-jindal/"
               target="_blank"
               rel="noopener noreferrer"
@@ -27,22 +43,34 @@ export default function Footer() {
             >
               <Linkedin className="h-6 w-6" />
               <span className="sr-only">LinkedIn</span>
-            </Link>
+            </a>
           </div>
 
           <div className="flex justify-center space-x-4 mb-6">
-            <Link href="#home" className="text-sm text-gray-400 hover:text-white transition-colors">
+            <button
+              onClick={() => scrollToSection("home")}
+              className="text-sm text-gray-400 hover:text-white transition-colors"
+            >
               Home
-            </Link>
-            <Link href="#about" className="text-sm text-gray-400 hover:text-white transition-colors">
+            </button>
+            <button
+              onClick={() => scrollToSection("about")}
+              className="text-sm text-gray-400 hover:text-white transition-colors"
+            >
               About
-            </Link>
-            <Link href="#skills" className="text-sm text-gray-400 hover:text-white transition-colors">
+            </button>
+            <button
+              onClick={() => scrollToSection("skills")}
+              className="text-sm text-gray-400 hover:text-white transition-colors"
+            >
               Skills
-            </Link>
-            <Link href="#projects" className="text-sm text-gray-400 hover:text-white transition-colors">
+            </button>
+            <button
+              onClick={() => scrollToSection("projects")}
+              className="text-sm text-gray-400 hover:text-white transition-colors"
+            >
               Projects
-            </Link>
+            </button>
           </div>
 
           <p className="text-gray-500 text-sm">&copy; {new Date().getFullYear()} Nayan Jindal. All rights reserved.</p>

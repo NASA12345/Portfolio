@@ -105,8 +105,7 @@ export default function Projects() {
                 key={index}
                 variants={itemVariants}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700 overflow-hidden"
-                whileHover={{ y: -5 }}
+                className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700 overflow-hidden hover-lift"
                 onMouseEnter={() => setActiveProject(index)}
               >
                 <div className="md:grid md:grid-cols-2 gap-0">

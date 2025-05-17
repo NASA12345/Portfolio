@@ -85,9 +85,7 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.2 }}
             >
               <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 relative">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400">
-                  Nayan Jindal
-                </span>
+                <span className="text-gradient">Nayan Jindal</span>
                 <motion.span
                   className="absolute -z-10 inset-0 bg-gradient-to-r from-purple-600/20 to-indigo-600/20 dark:from-purple-400/10 dark:to-indigo-400/10 blur-xl rounded-full"
                   animate={{

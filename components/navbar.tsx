@@ -1,10 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { useTheme } from "next-themes"
 import { Moon, Sun, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 
 const navLinks = [
@@ -24,6 +23,24 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
+
+  // Function to handle smooth scrolling
+  const scrollToSection = useCallback((sectionId: string) => {
+    const targetElement = document.getElementById(sectionId)
+    if (targetElement) {
+      // Close the mobile menu
+      setIsMenuOpen(false)
+
+      // Scroll to the target element with smooth behavior
+      window.scrollTo({
+        top: targetElement.offsetTop - 80, // Offset for navbar
+        behavior: "smooth",
+      })
+
+      // Update URL without causing a page reload
+      window.history.pushState(null, "", `#${sectionId}`)
+    }
+  }, [])
 
   useEffect(() => {
     setMounted(true)
@@ -59,14 +76,14 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-md py-2" : "bg-transparent py-4"
+        scrolled ? "bg-glass shadow-md py-2" : "bg-transparent py-4"
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-          <Link href="/" className="text-xl font-bold text-gray-900 dark:text-white">
+          <button onClick={() => scrollToSection("home")} className="text-xl font-bold text-gray-900 dark:text-white">
             Nayan<span className="text-purple-600">.</span>
-          </Link>
+          </button>
         </motion.div>
 
         {/* Desktop Navigation */}
@@ -77,9 +94,9 @@ export default function Navbar() {
           className="hidden md:flex items-center space-x-6"
         >
           {navLinks.map((link, index) => (
-            <Link
+            <button
               key={link.name}
-              href={link.href}
+              onClick={() => scrollToSection(link.href.substring(1))}
               className={`text-sm font-medium transition-colors relative ${
                 activeSection === link.href.substring(1)
                   ? "text-purple-600 dark:text-purple-400"
@@ -94,7 +111,7 @@ export default function Navbar() {
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
-            </Link>
+            </button>
           ))}
         </motion.nav>
 
@@ -164,7 +181,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white dark:bg-gray-900 shadow-lg overflow-hidden"
+            className="md:hidden bg-glass shadow-lg overflow-hidden"
           >
             <nav className="flex flex-col py-4">
               {navLinks.map((link, index) => (
@@ -174,17 +191,16 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.2, delay: index * 0.05 }}
                 >
-                  <Link
-                    href={link.href}
-                    className={`px-6 py-3 text-sm font-medium block transition-colors ${
+                  <button
+                    onClick={() => scrollToSection(link.href.substring(1))}
+                    className={`px-6 py-3 text-sm font-medium block transition-colors w-full text-left ${
                       activeSection === link.href.substring(1)
                         ? "text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-gray-800"
                         : "text-gray-700 hover:text-purple-600 hover:bg-gray-50 dark:text-gray-200 dark:hover:text-purple-400 dark:hover:bg-gray-800"
                     }`}
-                    onClick={() => setIsMenuOpen(false)}
                   >
                     {link.name}
-                  </Link>
+                  </button>
                 </motion.div>
               ))}
             </nav>

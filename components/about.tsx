@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Phone, Mail, MapPin, User, Code, Briefcase } from "lucide-react"
+import { Mail, MapPin, User, Code, Briefcase } from "lucide-react"
 
 export default function About() {
   const [ref, inView] = useInView({
@@ -59,7 +59,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-10">
             <motion.div
               variants={itemVariants}
-              className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 p-8 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700"
+              className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 p-8 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700 hover-lift"
             >
               <div className="flex items-start mb-6">
                 <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-xl mr-4">
@@ -103,12 +103,10 @@ export default function About() {
 
             <motion.div
               variants={itemVariants}
-              className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 p-8 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700"
+              className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 p-8 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700 hover-lift"
             >
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center">
-                <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                  Contact Information
-                </span>
+                <span className="text-gradient">Contact Information</span>
               </h3>
 
               <ul className="space-y-6">
