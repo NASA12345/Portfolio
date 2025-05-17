@@ -114,11 +114,6 @@ export default function About() {
               <ul className="space-y-6">
                 {[
                   {
-                    icon: <Phone className="h-5 w-5 text-purple-600 dark:text-purple-400" />,
-                    text: "+91-8950558070",
-                    label: "Phone",
-                  },
-                  {
                     icon: <Mail className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />,
                     text: "nayan11404@gmail.com",
                     label: "Email",
