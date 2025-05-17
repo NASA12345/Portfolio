@@ -21,6 +21,14 @@ const education = [
     grade: "94.8%",
     year: "2020",
   },
+  {
+    institution: "Shri Baba Mast Nath Public School",
+    degree: "Class X (CBSE)",
+    duration: "April 2008 – April 2020",
+    location: "Rohtak, Haryana, India",
+    grade: "95.7%",
+    year: "2008",
+  },
 ]
 
 export default function Education() {
