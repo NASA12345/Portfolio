@@ -7,16 +7,6 @@ import Link from "next/link"
 
 const experiences = [
   {
-    position: "NSS Volunteer",
-    company: "Netaji Subhash University of Technology",
-    duration: "Aug 2023 – Nov 2024",
-    location: "Delhi, India",
-    description:
-      "Volunteered in community service projects, promoting social welfare, environmental awareness, and skill development.",
-    link: "",
-    skills: ["Community Service", "Social Welfare", "Environmental Awareness"],
-  },
-  {
     position: "Contributor",
     company: "Google Code-in 2019",
     duration: "Nov 2019 – Jan 2020",

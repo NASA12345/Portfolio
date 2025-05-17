@@ -90,7 +90,7 @@ export default function Projects() {
                 My Work
               </span>
             </motion.div>
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Featured Projects</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Projects</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-indigo-600 mx-auto mb-4"></div>
           </motion.div>
 
