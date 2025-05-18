@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Mail, MapPin, User, Code, Briefcase } from "lucide-react"
+import { Mail, MapPin, User, Code, Briefcase, ExternalLink, Github, Linkedin } from "lucide-react"
+import Link from "next/link"
 
 export default function About() {
   const [ref, inView] = useInView({
@@ -41,7 +42,7 @@ export default function About() {
           animate={inView ? "visible" : "hidden"}
           className="max-w-4xl mx-auto"
         >
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <motion.div variants={itemVariants} className="text-center mb-12">
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
               animate={inView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
@@ -56,95 +57,152 @@ export default function About() {
             <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-indigo-600 mx-auto mb-4"></div>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Profile Card */}
             <motion.div
               variants={itemVariants}
-              className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 p-8 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700 hover-lift"
+              className="md:col-span-1 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700 overflow-hidden hover-lift"
             >
-              <div className="flex items-start mb-6">
-                <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-xl mr-4">
-                  <User className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+              <div className="p-6 flex flex-col h-full">
+                <div className="flex items-center mb-4">
+                  <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-xl mr-4">
+                    <User className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Nayan Jindal</h3>
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Personal Profile</h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    I&apos;m Nayan Jindal, a Computer Science and Engineering student at Netaji Subhash University of
-                    Technology with a passion for software development and problem-solving.
-                  </p>
-                </div>
-              </div>
 
-              <div className="flex items-start mb-6">
-                <div className="bg-indigo-100 dark:bg-indigo-900/30 p-3 rounded-xl mr-4">
-                  <Code className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Technical Journey</h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    With experience in web development, open-source contributions, and competitive programming, I&apos;m
-                    constantly expanding my knowledge and skills in the tech industry.
-                  </p>
-                </div>
-              </div>
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-6">
+                  Computer Science student at NSUT with a passion for software development and problem-solving.
+                </p>
 
-              <div className="flex items-start">
-                <div className="bg-violet-100 dark:bg-violet-900/30 p-3 rounded-xl mr-4">
-                  <Briefcase className="h-6 w-6 text-violet-600 dark:text-violet-400" />
+                {/* Contact Info */}
+                <div className="mt-auto space-y-3">
+                  <div className="flex items-center p-3 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700">
+                    <div className="mr-3 p-2 rounded-lg bg-gray-100 dark:bg-gray-700">
+                      <Mail className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Email</p>
+                      <p className="text-gray-700 dark:text-gray-300 text-sm font-medium">nayan11404@gmail.com</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center p-3 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700">
+                    <div className="mr-3 p-2 rounded-lg bg-gray-100 dark:bg-gray-700">
+                      <MapPin className="h-4 w-4 text-violet-600 dark:text-violet-400" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Location</p>
+                      <p className="text-gray-700 dark:text-gray-300 text-sm font-medium">Delhi, India</p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Experience</h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    I&apos;ve contributed to open-source projects during Google Code-in 2019 and volunteered with NSS to
-                    promote social welfare and environmental awareness.
-                  </p>
+
+                {/* Social Links */}
+                <div className="flex justify-center mt-6 space-x-4">
+                  <Link
+                    href="https://github.com/NASA12345"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-100 hover:text-purple-600 dark:hover:bg-purple-900/30 dark:hover:text-purple-400 transition-colors"
+                  >
+                    <Github className="h-5 w-5" />
+                    <span className="sr-only">GitHub</span>
+                  </Link>
+                  <Link
+                    href="https://www.linkedin.com/in/nayan-jindal/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-100 hover:text-purple-600 dark:hover:bg-purple-900/30 dark:hover:text-purple-400 transition-colors"
+                  >
+                    <Linkedin className="h-5 w-5" />
+                    <span className="sr-only">LinkedIn</span>
+                  </Link>
                 </div>
               </div>
             </motion.div>
 
+            {/* Skills & Experience Summary */}
             <motion.div
               variants={itemVariants}
-              className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 p-8 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700 hover-lift"
+              className="md:col-span-2 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700 overflow-hidden hover-lift"
             >
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center">
-                <span className="text-gradient">Contact Information</span>
-              </h3>
-
-              <ul className="space-y-6">
-                {[
-                  {
-                    icon: <Mail className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />,
-                    text: "nayan11404@gmail.com",
-                    label: "Email",
-                  },
-                  {
-                    icon: <MapPin className="h-5 w-5 text-violet-600 dark:text-violet-400" />,
-                    text: "Delhi, India",
-                    label: "Location",
-                  },
-                ].map((item, index) => (
-                  <motion.li
-                    key={index}
-                    className="flex items-center p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700 transition-all hover:shadow-md hover:bg-white dark:hover:bg-gray-800"
-                    whileHover={{ x: 5 }}
-                  >
-                    <div className="mr-4 p-2 rounded-lg bg-gray-100 dark:bg-gray-700">{item.icon}</div>
-                    <div>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">{item.label}</p>
-                      <p className="text-gray-700 dark:text-gray-300 font-medium">{item.text}</p>
+              <div className="p-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Technical Skills */}
+                  <div>
+                    <div className="flex items-start mb-4">
+                      <div className="bg-indigo-100 dark:bg-indigo-900/30 p-3 rounded-xl mr-4">
+                        <Code className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Technical Skills</h3>
+                        <div className="flex flex-wrap gap-2">
+                          {["C++", "Python", "JavaScript", "React", "Next.js", "Firebase"].map((skill, index) => (
+                            <span
+                              key={index}
+                              className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                          <Link
+                            href="#skills"
+                            className="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full text-xs font-medium flex items-center"
+                          >
+                            More <ExternalLink className="h-3 w-3 ml-1" />
+                          </Link>
+                        </div>
+                      </div>
                     </div>
-                  </motion.li>
-                ))}
-              </ul>
+                  </div>
 
-              <motion.div
-                className="mt-8 p-4 rounded-xl bg-purple-50 dark:bg-purple-900/10 border border-purple-100 dark:border-purple-800/20"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                <p className="text-purple-700 dark:text-purple-400 text-sm italic">
-                  "I believe in creating technology that makes a positive impact on people's lives."
-                </p>
-              </motion.div>
+                  {/* Experience */}
+                  <div>
+                    <div className="flex items-start mb-4">
+                      <div className="bg-violet-100 dark:bg-violet-900/30 p-3 rounded-xl mr-4">
+                        <Briefcase className="h-6 w-6 text-violet-600 dark:text-violet-400" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Experience</h3>
+                        <p className="text-gray-600 dark:text-gray-300 text-sm">
+                          Google Code-in 2019 Contributor with 33 completed tasks across multiple open-source
+                          organizations.
+                        </p>
+                        <Link
+                          href="#experience"
+                          className="mt-2 inline-flex items-center text-sm text-purple-600 dark:text-purple-400 hover:underline"
+                        >
+                          View details <ExternalLink className="h-3 w-3 ml-1" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Education Summary */}
+                <div className="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700">
+                  <div className="flex items-start">
+                    <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-xl mr-4">
+                      <User className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">About Me</h3>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                        Computer Science student at NSUT with a passion for web development, competitive programming,
+                        and open-source contributions. Constantly expanding my knowledge in software development and
+                        problem-solving.
+                      </p>
+
+                      <div className="mt-4 p-4 rounded-xl bg-purple-50 dark:bg-purple-900/10 border border-purple-100 dark:border-purple-800/20">
+                        <p className="text-purple-700 dark:text-purple-400 text-sm italic">
+                          "I believe in creating technology that makes a positive impact on people's lives."
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </motion.div>

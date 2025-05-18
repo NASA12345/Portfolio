@@ -86,77 +86,77 @@ export default function Experience() {
 
                 {/* Experience card */}
                 <div className="md:ml-16">
-                  <motion.div
-                    className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700 overflow-hidden"
-                    whileHover={{
-                      y: -5,
-                      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                    }}
-                  >
-                    {/* Top colored bar */}
-                    <div className="h-2 bg-gradient-to-r from-purple-600 to-indigo-600"></div>
-
-                    <div className="p-6">
-                      {/* Position and timeline dot */}
-                      <div className="flex items-start">
-                        <div className="hidden md:block absolute -ml-16 mt-1">
-                          <motion.div
-                            className="h-10 w-10 rounded-full bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center shadow-lg"
-                            whileHover={{ scale: 1.1 }}
-                          >
-                            <span className="text-white text-xs font-bold">
-                              {exp.duration.split(" – ")[0].split(" ")[1]}
-                            </span>
-                          </motion.div>
-                        </div>
-
-                        <div>
-                          <h3 className="text-xl font-bold text-gray-900 dark:text-white">{exp.position}</h3>
-                          <div className="flex items-center mt-1">
-                            <span className="text-purple-600 dark:text-purple-400 font-medium">{exp.company}</span>
-                            {exp.link && (
-                              <Link
-                                href={exp.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="ml-2 text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
-                              >
-                                <ExternalLink className="h-4 w-4" />
-                              </Link>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Details */}
-                      <div className="mt-4 space-y-4">
-                        <div className="flex flex-wrap gap-2 text-sm text-gray-600 dark:text-gray-300">
-                          <div className="flex items-center mr-4">
-                            <Calendar className="h-4 w-4 mr-1 text-purple-600 dark:text-purple-400" />
-                            {exp.duration}
-                          </div>
-                          <div className="flex items-center">
-                            <MapPin className="h-4 w-4 mr-1 text-indigo-600 dark:text-indigo-400" />
-                            {exp.location}
-                          </div>
-                        </div>
-
-                        <p className="text-gray-600 dark:text-gray-300">{exp.description}</p>
-
-                        {/* Skills */}
-                        <div className="flex flex-wrap gap-2 mt-4">
-                          {exp.skills.map((skill, skillIndex) => (
-                            <span
-                              key={skillIndex}
-                              className="px-3 py-1 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded-full text-xs font-medium"
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
+                  <div className="relative">
+                    {/* Timeline dot with year - OUTSIDE the card so it doesn't get affected by hover */}
+                    <div className="hidden md:block absolute -left-16 top-1 z-10">
+                      <div className="h-10 w-10 rounded-full bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center shadow-lg">
+                        <span className="text-white text-xs font-bold">
+                          {exp.duration.split(" – ")[0].split(" ")[1]}
+                        </span>
                       </div>
                     </div>
-                  </motion.div>
+
+                    <motion.div
+                      className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700 overflow-hidden"
+                      whileHover={{
+                        y: -5,
+                        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                      }}
+                    >
+                      {/* Top colored bar */}
+                      <div className="h-2 bg-gradient-to-r from-purple-600 to-indigo-600"></div>
+
+                      <div className="p-6">
+                        {/* Position */}
+                        <div className="flex items-start">
+                          <div>
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white">{exp.position}</h3>
+                            <div className="flex items-center mt-1">
+                              <span className="text-purple-600 dark:text-purple-400 font-medium">{exp.company}</span>
+                              {exp.link && (
+                                <Link
+                                  href={exp.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="ml-2 text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
+                                >
+                                  <ExternalLink className="h-4 w-4" />
+                                </Link>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Details */}
+                        <div className="mt-4 space-y-4">
+                          <div className="flex flex-wrap gap-2 text-sm text-gray-600 dark:text-gray-300">
+                            <div className="flex items-center mr-4">
+                              <Calendar className="h-4 w-4 mr-1 text-purple-600 dark:text-purple-400" />
+                              {exp.duration}
+                            </div>
+                            <div className="flex items-center">
+                              <MapPin className="h-4 w-4 mr-1 text-indigo-600 dark:text-indigo-400" />
+                              {exp.location}
+                            </div>
+                          </div>
+
+                          <p className="text-gray-600 dark:text-gray-300">{exp.description}</p>
+
+                          {/* Skills */}
+                          <div className="flex flex-wrap gap-2 mt-4">
+                            {exp.skills.map((skill, skillIndex) => (
+                              <span
+                                key={skillIndex}
+                                className="px-3 py-1 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded-full text-xs font-medium"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
                 </div>
               </motion.div>
             ))}

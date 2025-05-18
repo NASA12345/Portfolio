@@ -5,7 +5,6 @@ import { useInView } from "react-intersection-observer"
 import { Github, Calendar, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { useState } from "react"
 
 // Helper function to extract YouTube video ID
 function getYouTubeVideoId(url: string): string {
@@ -54,8 +53,6 @@ export default function Projects() {
     threshold: 0.1,
   })
 
-  const [activeProject, setActiveProject] = useState(0)
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -71,10 +68,6 @@ export default function Projects() {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
   }
-
-  console.log("SocialCalc video URL:", projects[1].demoVideo)
-  console.log("SocialCalc video ID:", getYouTubeVideoId(projects[1].demoVideo))
-  console.log("SocialCalc thumbnail URL:", getYouTubeThumbnailUrl(projects[1].demoVideo))
 
   return (
     <section id="projects" ref={ref} className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
@@ -117,13 +110,12 @@ export default function Projects() {
                 variants={itemVariants}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700 overflow-hidden hover-lift"
-                onMouseEnter={() => setActiveProject(index)}
               >
                 <div className="md:grid md:grid-cols-2 gap-0">
                   <div className="relative overflow-hidden group">
                     <motion.div
                       initial={{ scale: 1.1, opacity: 0.8 }}
-                      animate={activeProject === index ? { scale: 1, opacity: 1 } : {}}
+                      animate={{ scale: 1, opacity: 1 }}
                       transition={{ duration: 0.5 }}
                       className="h-full"
                     >
@@ -167,7 +159,7 @@ export default function Projects() {
                         <motion.span
                           key={techIndex}
                           initial={{ opacity: 0, scale: 0.8 }}
-                          animate={activeProject === index ? { opacity: 1, scale: 1 } : {}}
+                          animate={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.3, delay: 0.1 + techIndex * 0.05 }}
                           className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium"
                         >

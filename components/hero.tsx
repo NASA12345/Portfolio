@@ -10,26 +10,30 @@ export default function Hero() {
   const [mounted, setMounted] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
 
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+
+  const blobConfigs = useRef(
+    Array.from({ length: 8 }, () => ({
+      width: Math.random() * 300 + 100,
+      height: Math.random() * 300 + 100,
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+    }))
+  )
+
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  // Mouse parallax effect
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = containerRef.current?.getBoundingClientRect()
+    if (!rect) return
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect()
-        const x = (e.clientX - rect.left) / rect.width - 0.5
-        const y = (e.clientY - rect.top) / rect.height - 0.5
-        setMousePosition({ x, y })
-      }
-    }
+    const x = (e.clientX - rect.left) / rect.width - 0.5
+    const y = (e.clientY - rect.top) / rect.height - 0.5
 
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [])
+    setMousePos({ x, y })
+  }
 
   if (!mounted) return null
 
@@ -37,37 +41,34 @@ export default function Hero() {
     <section
       id="home"
       ref={containerRef}
+      onMouseMove={handleMouseMove}
       className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden"
     >
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-white dark:from-gray-900 dark:to-gray-800 z-0" />
 
-      {/* Animated background elements */}
+      {/* Animated blobs with framer-motion */}
       <div className="absolute inset-0 overflow-hidden z-0">
-        {[...Array(8)].map((_, i) => (
+        {blobConfigs.current.map((config, i) => (
           <motion.div
             key={i}
             className="absolute rounded-full bg-gradient-to-br from-purple-300/30 to-purple-500/20 dark:from-purple-700/20 dark:to-purple-900/10 blur-xl"
             style={{
-              width: `${Math.random() * 300 + 100}px`,
-              height: `${Math.random() * 300 + 100}px`,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
+              width: `${config.width}px`,
+              height: `${config.height}px`,
+              top: `${config.top}%`,
+              left: `${config.left}%`,
             }}
             animate={{
-              x: mousePosition.x * -30 * (i + 1),
-              y: mousePosition.y * -30 * (i + 1),
-              scale: [1, 1.05, 1],
+              x: mousePos.x * (i + 1) * 10,
+              y: mousePos.y * (i + 1) * 10,
             }}
-            transition={{
-              x: { duration: 1, ease: "easeOut" },
-              y: { duration: 1, ease: "easeOut" },
-              scale: { duration: 8, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" },
-            }}
+            transition={{ type: "spring", stiffness: 30, damping: 20 }}
           />
         ))}
       </div>
 
+      {/* ======== Rest of your original content (unchanged) ======== */}
       <div className="container mx-auto px-4 z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
@@ -89,10 +90,10 @@ export default function Hero() {
                 <motion.span
                   className="absolute -z-10 inset-0 bg-gradient-to-r from-purple-600/20 to-indigo-600/20 dark:from-purple-400/10 dark:to-indigo-400/10 blur-xl rounded-full"
                   animate={{
-                    scale: [1, 1.05, 1],
-                    opacity: [0.3, 0.4, 0.3],
+                    scale: [1, 1.01, 1],
+                    opacity: [0.3, 0.32, 0.3],
                   }}
-                  transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY }}
+                  transition={{ duration: 15, repeat: Number.POSITIVE_INFINITY }}
                 />
               </h1>
             </motion.div>
@@ -141,33 +142,28 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.8 }}
             className="flex justify-center space-x-6"
           >
-            {[
-              { icon: <Github className="h-6 w-6" />, href: "https://github.com/NASA12345", label: "GitHub" },
-              {
-                icon: <Linkedin className="h-6 w-6" />,
-                href: "https://www.linkedin.com/in/nayan-jindal/",
-                label: "LinkedIn",
-              },
-            ].map((social, index) => (
-              <motion.div
-                key={social.label}
-                whileHover={{ y: -5, scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
-              >
-                <Link
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors"
+            {[{ icon: <Github className="h-6 w-6" />, href: "https://github.com/NASA12345", label: "GitHub" },
+              { icon: <Linkedin className="h-6 w-6" />, href: "https://www.linkedin.com/in/nayan-jindal/", label: "LinkedIn" }]
+              .map((social, idx) => (
+                <motion.div
+                  key={social.label}
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.8 + idx * 0.1 }}
                 >
-                  {social.icon}
-                  <span className="sr-only">{social.label}</span>
-                </Link>
-              </motion.div>
-            ))}
+                  <Link
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors"
+                  >
+                    {social.icon}
+                    <span className="sr-only">{social.label}</span>
+                  </Link>
+                </motion.div>
+              ))}
           </motion.div>
         </div>
       </div>
