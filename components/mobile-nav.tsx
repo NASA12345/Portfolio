@@ -53,6 +53,8 @@ export default function MobileNav() {
 
   useEffect(() => {
     setMounted(true)
+    // Explicitly set the active section to "home" on initial load
+    setActiveSection("home")
 
     const handleScroll = () => {
       // Determine active section based on scroll position
@@ -92,7 +94,7 @@ export default function MobileNav() {
             key={item.name}
             id={`mobile-nav-${item.href.substring(1)}`}
             onClick={() => scrollToSection(item.href.substring(1))}
-            className={`flex flex-col items-center justify-center min-w-[4.5rem] px-3 py-2 mx-1 rounded-lg transition-colors ${
+            className={`flex flex-col items-center justify-center min-w-[4.5rem] px-3 py-2 mx-1 rounded-lg transition-colors relative ${
               activeSection === item.href.substring(1)
                 ? "bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400"
                 : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/50"
@@ -103,7 +105,8 @@ export default function MobileNav() {
             {activeSection === item.href.substring(1) && (
               <motion.div
                 layoutId="mobileActiveSection"
-                className="absolute bottom-0 h-0.5 w-10 bg-purple-600 dark:bg-purple-400"
+                className="absolute bottom-0 left-0 right-0 mx-auto w-10 h-0.5 bg-purple-600 dark:bg-purple-400"
+                style={{ bottom: "2px" }}
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}

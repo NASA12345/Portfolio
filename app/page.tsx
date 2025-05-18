@@ -17,13 +17,13 @@ import MobileNav from "@/components/mobile-nav"
 export default function Home() {
   // Handle smooth scrolling for anchor links
   useEffect(() => {
-    // Set the initial active section to "home"
-    const setInitialActiveSection = () => {
-      const homeSection = document.getElementById("home")
-      if (homeSection) {
-        const event = new Event("scroll")
-        window.dispatchEvent(event)
-      }
+    // Force the initial active section to be "home"
+    const forceHomeActive = () => {
+      // Dispatch a scroll event to trigger the active section detection
+      window.scrollTo(0, 0)
+      setTimeout(() => {
+        window.dispatchEvent(new Event("scroll"))
+      }, 100)
     }
 
     const handleAnchorClick = (e: MouseEvent) => {
@@ -64,12 +64,15 @@ export default function Home() {
             })
           }, 100)
         }
+      } else {
+        // If no hash, ensure we're at the top and "home" is active
+        window.scrollTo(0, 0)
       }
     }
 
     document.addEventListener("click", handleAnchorClick)
     handleInitialHashNavigation()
-    setInitialActiveSection()
+    forceHomeActive()
 
     return () => {
       document.removeEventListener("click", handleAnchorClick)

@@ -44,6 +44,8 @@ export default function Navbar() {
 
   useEffect(() => {
     setMounted(true)
+    // Explicitly set the active section to "home" on initial load
+    setActiveSection("home")
 
     const handleScroll = () => {
       setScrolled(window.scrollY > 10)
