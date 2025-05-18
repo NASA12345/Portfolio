@@ -12,6 +12,7 @@ import Education from "@/components/education"
 import Achievements from "@/components/achievements"
 import Footer from "@/components/footer"
 import ScrollToTop from "@/components/scroll-to-top"
+import MobileNav from "@/components/mobile-nav"
 
 export default function Home() {
   // Handle smooth scrolling for anchor links
@@ -88,6 +89,7 @@ export default function Home() {
       <Achievements />
       <Footer />
       <ScrollToTop />
+      <MobileNav />
     </main>
   )
 }
