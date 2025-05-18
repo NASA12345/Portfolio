@@ -11,7 +11,7 @@ const education = [
     duration: "Aug 2023 – July 2027",
     location: "Delhi, India",
     grade: "8.88 GPA",
-    year: "2023",
+    year: "2027",
   },
   {
     institution: "Sant Gyaneshwar Model School",
@@ -19,7 +19,7 @@ const education = [
     duration: "April 2020 – April 2022",
     location: "Delhi, India",
     grade: "94.8%",
-    year: "2020",
+    year: "2022",
   },
   {
     institution: "Shri Baba Mast Nath Public School",
@@ -27,7 +27,7 @@ const education = [
     duration: "April 2008 – April 2020",
     location: "Rohtak, Haryana, India",
     grade: "95.7%",
-    year: "2008",
+    year: "2020",
   },
 ]
 
