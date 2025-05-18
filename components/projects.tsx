@@ -9,15 +9,22 @@ import { useState } from "react"
 
 // Helper function to extract YouTube video ID
 function getYouTubeVideoId(url: string): string {
+  if (!url) return ""
+
+  // Handle different YouTube URL formats
   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/
   const match = url.match(regExp)
+
   return match && match[2].length === 11 ? match[2] : ""
 }
 
 // Helper function to get YouTube thumbnail URL
 function getYouTubeThumbnailUrl(url: string): string {
   const videoId = getYouTubeVideoId(url)
-  return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : "/placeholder.svg?height=400&width=600"
+  if (!videoId) return "/placeholder.svg?height=400&width=600"
+
+  // Try to get the high-quality thumbnail, with fallback to medium quality
+  return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
 }
 
 const projects = [
@@ -64,6 +71,10 @@ export default function Projects() {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
   }
+
+  console.log("SocialCalc video URL:", projects[1].demoVideo)
+  console.log("SocialCalc video ID:", getYouTubeVideoId(projects[1].demoVideo))
+  console.log("SocialCalc thumbnail URL:", getYouTubeThumbnailUrl(projects[1].demoVideo))
 
   return (
     <section id="projects" ref={ref} className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
@@ -123,6 +134,12 @@ export default function Projects() {
                             src={getYouTubeThumbnailUrl(project.demoVideo) || "/placeholder.svg"}
                             alt={`${project.title} video thumbnail`}
                             className="w-full h-full object-cover"
+                            onError={(e) => {
+                              // If thumbnail fails to load, use a placeholder
+                              const target = e.target as HTMLImageElement
+                              target.src = "/placeholder.svg?height=400&width=600"
+                              console.error(`Failed to load thumbnail for ${project.title}`)
+                            }}
                           />
                           {/* Play button overlay */}
                           <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
