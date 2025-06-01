@@ -13,18 +13,18 @@ const skillCategories = [
     skills: ["C++", "Python", "HTML", "CSS", "JavaScript", "TypeScript", "SQL"],
   },
   {
-    title: "Databases",
-    icon: <Database className="h-5 w-5" />,
-    color: "from-green-500 to-emerald-500",
-    darkColor: "from-green-600 to-emerald-600",
-    skills: ["MongoDB", "MySQL"],
-  },
-  {
     title: "Frameworks",
     icon: <Wrench className="h-5 w-5" />,
     color: "from-purple-500 to-violet-500",
     darkColor: "from-purple-600 to-violet-600",
     skills: ["React JS", "Next JS", "Node JS", "Express JS", "Firebase"],
+  },
+  {
+    title: "Databases",
+    icon: <Database className="h-5 w-5" />,
+    color: "from-green-500 to-emerald-500",
+    darkColor: "from-green-600 to-emerald-600",
+    skills: ["MongoDB", "MySQL"],
   },
   {
     title: "Developer Tools",
