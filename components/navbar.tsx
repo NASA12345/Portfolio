@@ -28,19 +28,30 @@ export default function Navbar() {
   const scrollToSection = useCallback((sectionId: string) => {
     const targetElement = document.getElementById(sectionId)
     if (targetElement) {
-      // Close the mobile menu
+      // Close the mobile menu first
       setIsMenuOpen(false)
+      
+      // Add a small delay to allow menu to close smoothly
+      setTimeout(() => {
+        // Get the navbar height for proper offset
+        const navbar = document.querySelector('header')
+        const navbarHeight = navbar ? navbar.offsetHeight : 80
+        
+        // Calculate the target position
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset
+        const offsetPosition = elementPosition - navbarHeight - 20 // Extra 20px padding
+        
+        // Scroll to the target element with smooth behavior
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        })
 
-      // Scroll to the target element with smooth behavior
-      window.scrollTo({
-        top: targetElement.offsetTop - 80, // Offset for navbar
-        behavior: "smooth",
-      })
-
-      // Update URL without causing a page reload
-      window.history.pushState(null, "", `#${sectionId}`)
+        // Update URL without causing a page reload
+        window.history.pushState(null, "", `#${sectionId}`)
+      }, isMenuOpen ? 300 : 0) // Delay only if menu was open
     }
-  }, [])
+  }, [isMenuOpen])
 
   useEffect(() => {
     setMounted(true)
@@ -52,18 +63,28 @@ export default function Navbar() {
 
       // Determine active section based on scroll position
       const sections = navLinks.map((link) => link.href.substring(1))
+      
+      // Get navbar height for accurate calculation
+      const navbar = document.querySelector('header')
+      const navbarHeight = navbar ? navbar.offsetHeight : 80
+      const scrollOffset = navbarHeight + 50 // Add some extra offset
 
       // Find the current section in view
-      for (const section of sections.reverse()) {
+      let currentSection = "home" // Default to home
+      
+      for (const section of sections) {
         const element = document.getElementById(section)
         if (element) {
           const rect = element.getBoundingClientRect()
-          if (rect.top <= 100) {
-            setActiveSection(section)
+          // Check if section is in viewport considering navbar height
+          if (rect.top <= scrollOffset && rect.bottom >= scrollOffset) {
+            currentSection = section
             break
           }
         }
       }
+      
+      setActiveSection(currentSection)
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -72,6 +93,29 @@ export default function Navbar() {
 
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const navbar = document.querySelector('header')
+      if (navbar && !navbar.contains(event.target as Node) && isMenuOpen) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMenuOpen])
 
   if (!mounted) return null
 
@@ -178,35 +222,51 @@ export default function Navbar() {
       {/* Mobile Navigation */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-glass shadow-lg overflow-hidden"
-          >
-            <nav className="flex flex-col py-4">
-              {navLinks.map((link, index) => (
-                <motion.div
-                  key={link.name}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.2, delay: index * 0.05 }}
-                >
-                  <button
-                    onClick={() => scrollToSection(link.href.substring(1))}
-                    className={`px-6 py-3 text-sm font-medium block transition-colors w-full text-left ${
-                      activeSection === link.href.substring(1)
-                        ? "text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-gray-800"
-                        : "text-gray-700 hover:text-purple-600 hover:bg-gray-50 dark:text-gray-200 dark:hover:text-purple-400 dark:hover:bg-gray-800"
-                    }`}
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm"
+              onClick={() => setIsMenuOpen(false)}
+            />
+            
+            {/* Mobile Menu */}
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden bg-glass shadow-lg overflow-hidden relative z-10"
+            >
+              <nav className="flex flex-col py-4">
+                {navLinks.map((link, index) => (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.2, delay: index * 0.05 }}
                   >
-                    {link.name}
-                  </button>
-                </motion.div>
-              ))}
-            </nav>
-          </motion.div>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        scrollToSection(link.href.substring(1))
+                      }}
+                      className={`px-6 py-3 text-sm font-medium block transition-colors w-full text-left touch-manipulation ${
+                        activeSection === link.href.substring(1)
+                          ? "text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-gray-800"
+                          : "text-gray-700 hover:text-purple-600 hover:bg-gray-50 dark:text-gray-200 dark:hover:text-purple-400 dark:hover:bg-gray-800"
+                      }`}
+                    >
+                      {link.name}
+                    </button>
+                  </motion.div>
+                ))}
+              </nav>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>

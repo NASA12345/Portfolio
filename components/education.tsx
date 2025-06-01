@@ -91,7 +91,7 @@ export default function Education() {
               <motion.div key={index} variants={itemVariants} className="relative">
                 <div className="flex flex-col md:flex-row gap-6">
                   {/* Year indicator */}
-                  <div className="flex md:flex-col items-center md:items-start">
+                  <div className="hidden md:block flex md:flex-col items-center md:items-start">
                     <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-900/30 dark:to-indigo-900/30 border-2 border-purple-500 dark:border-purple-700 shadow-md">
                       <span className="text-lg font-bold text-purple-700 dark:text-purple-400">{edu.year}</span>
                     </div>

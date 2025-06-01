@@ -88,7 +88,7 @@ export default function Experience() {
                 <div className="md:ml-16">
                   <div className="relative">
                     {/* Timeline dot with year - OUTSIDE the card so it doesn't get affected by hover */}
-                    <div className="hidden md:block absolute -left-16 top-1 z-10">
+                    <div className="hidden md:block absolute -left-12 top-1 z-10">
                       <div className="h-10 w-10 rounded-full bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center shadow-lg">
                         <span className="text-white text-xs font-bold">
                           {exp.duration.split(" – ")[0].split(" ")[1]}
