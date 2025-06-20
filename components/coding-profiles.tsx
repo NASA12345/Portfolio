@@ -50,7 +50,7 @@ const codingProfiles = [
     rating: "",
     rank: "",
     repos: "34 repositories",
-    contributions: "676 contributions",
+    contributions: "1186 contributions",
     link: "https://github.com/NASA12345",
     color: "bg-gradient-to-r from-gray-700 to-gray-800",
     textColor: "text-white",

@@ -7,6 +7,16 @@ import Link from "next/link"
 
 const experiences = [
   {
+    position: "Software Developer Intern",
+    company: "Mahindra Logistics",
+    duration: "Apr 2025 – Present",
+    location: "Remote",
+    description:
+      "Built a real-time GPS tracking system for Mahindra Logistics to monitor delivery fleets across India. Developed RESTful APIs (Express.js), implemented a Kafka-based streaming pipeline, and managed MySQL operations using Drizzle ORM for reliable and scalable logistics data handling.",
+    link: "https://www.mahindralogistics.com/",
+    skills: ["React.js", "Node.js", "Express.js", "Kafka", "MySQL", "Drizzle ORM"],
+  },
+  {
     position: "Contributor",
     company: "Google Code-in 2019",
     duration: "Nov 2019 – Jan 2020",
@@ -91,7 +101,7 @@ export default function Experience() {
                     <div className="hidden md:block absolute -left-12 top-1 z-10">
                       <div className="h-10 w-10 rounded-full bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center shadow-lg">
                         <span className="text-white text-xs font-bold">
-                          {exp.duration.split(" – ")[0].split(" ")[1]}
+                          {exp.duration.includes("Present") ? "2025" : exp.duration.split(" – ")[0].split(" ")[1]}
                         </span>
                       </div>
                     </div>

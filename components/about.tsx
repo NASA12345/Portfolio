@@ -138,14 +138,16 @@ export default function About() {
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Technical Skills</h3>
                         <div className="flex flex-wrap gap-2">
-                          {["C++", "Python", "JavaScript", "React", "Next.js", "Firebase"].map((skill, index) => (
-                            <span
-                              key={index}
-                              className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium"
-                            >
-                              {skill}
-                            </span>
-                          ))}
+                          {["C++", "Python", "JavaScript", "React", "Next.js", "Express.js", "MySQL"].map(
+                            (skill, index) => (
+                              <span
+                                key={index}
+                                className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium"
+                              >
+                                {skill}
+                              </span>
+                            ),
+                          )}
                           <Link
                             href="#skills"
                             className="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full text-xs font-medium flex items-center"
@@ -166,8 +168,8 @@ export default function About() {
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Experience</h3>
                         <p className="text-gray-600 dark:text-gray-300 text-sm">
-                          Google Code-in 2019 Contributor with 33 completed tasks across multiple open-source
-                          organizations.
+                          Currently working as Software Developer Intern at Mahindra Logistics, developing real-time GPS
+                          tracking systems and scalable data pipelines.
                         </p>
                         <Link
                           href="#experience"
@@ -190,8 +192,8 @@ export default function About() {
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">About Me</h3>
                       <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
                         Computer Science student at NSUT with a passion for web development, competitive programming,
-                        and open-source contributions. Constantly expanding my knowledge in software development and
-                        problem-solving.
+                        and open-source contributions. Currently working on real-time systems and scalable backend
+                        architectures.
                       </p>
 
                       <div className="mt-4 p-4 rounded-xl bg-purple-50 dark:bg-purple-900/10 border border-purple-100 dark:border-purple-800/20">
