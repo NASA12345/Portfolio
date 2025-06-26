@@ -2,9 +2,24 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Award, Trophy, Medal, Star, TrendingUp, Target } from "lucide-react"
+import { Award, Trophy, Medal, Star, TrendingUp, Target, Code, Award } from "lucide-react"
 
 const achievements = [
+
+  {
+  title: "Amazon HackOn Season 5",
+  description: "Advanced to the final round of Amazon HackOn Season 5",
+  icon: <Code className="h-6 w-6" />,
+  color: "from-orange-500 to-orange-600",
+  link: "",
+  },
+  {
+  title: "Mahindra Techathon 2.0",
+  description: "Advanced to the final round of Mahindra Techathon 2.0",
+  icon: <Award className="h-6 w-6" />,
+  color: "from-blue-500 to-blue-600",
+  link: "",
+  },
   {
     title: "Smart India Hackathon",
     description: "Successfully shortlisted through two internal selection rounds of SIH 2024",
