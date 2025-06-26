@@ -17,14 +17,14 @@ const skillCategories = [
     icon: <Wrench className="h-5 w-5" />,
     color: "from-purple-500 to-violet-500",
     darkColor: "from-purple-600 to-violet-600",
-    skills: ["React JS", "Next JS", "Node JS", "Express JS", "Firebase"],
+    skills: ["React JS", "Next JS", "Node JS", "Express JS", "Firebase", "Kafka"],
   },
   {
     title: "Databases",
     icon: <Database className="h-5 w-5" />,
     color: "from-green-500 to-emerald-500",
     darkColor: "from-green-600 to-emerald-600",
-    skills: ["MongoDB", "MySQL"],
+    skills: ["MongoDB", "MySQL", "Drizzle ORM"],
   },
   {
     title: "Developer Tools",
@@ -64,7 +64,7 @@ export default function Skills() {
   return (
     <section id="skills" ref={ref} className="py-20 relative overflow-hidden">
       {/* Background */}
-     <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-gray-50 to-transparent dark:from-gray-800 dark:to-transparent"></div>
+      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-gray-50 to-transparent dark:from-gray-800 dark:to-transparent"></div>
       <div className="absolute -left-20 top-1/3 w-40 h-40 bg-purple-200/50 dark:bg-purple-900/20 rounded-full filter blur-3xl"></div>
       <div className="absolute -right-20 bottom-1/3 w-40 h-40 bg-blue-200/50 dark:bg-blue-900/20 rounded-full filter blur-3xl"></div>
 

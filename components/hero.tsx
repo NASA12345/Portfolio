@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { useEffect, useState, useRef } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
@@ -9,16 +11,16 @@ import Link from "next/link"
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
-
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
 
+  // Generate blob configurations once and store them
   const blobConfigs = useRef(
     Array.from({ length: 8 }, () => ({
       width: Math.random() * 300 + 100,
       height: Math.random() * 300 + 100,
       top: Math.random() * 100,
       left: Math.random() * 100,
-    }))
+    })),
   )
 
   useEffect(() => {
@@ -47,7 +49,7 @@ export default function Hero() {
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-white dark:from-gray-900 dark:to-gray-800 z-0" />
 
-      {/* Animated blobs with framer-motion */}
+      {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden z-0">
         {blobConfigs.current.map((config, i) => (
           <motion.div
@@ -68,7 +70,6 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* ======== Rest of your original content (unchanged) ======== */}
       <div className="container mx-auto px-4 z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
@@ -142,28 +143,33 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.8 }}
             className="flex justify-center space-x-6"
           >
-            {[{ icon: <Github className="h-6 w-6" />, href: "https://github.com/NASA12345", label: "GitHub" },
-              { icon: <Linkedin className="h-6 w-6" />, href: "https://www.linkedin.com/in/nayan-jindal/", label: "LinkedIn" }]
-              .map((social, idx) => (
-                <motion.div
-                  key={social.label}
-                  whileHover={{ y: -5, scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.8 + idx * 0.1 }}
+            {[
+              { icon: <Github className="h-6 w-6" />, href: "https://github.com/NASA12345", label: "GitHub" },
+              {
+                icon: <Linkedin className="h-6 w-6" />,
+                href: "https://www.linkedin.com/in/nayan-jindal/",
+                label: "LinkedIn",
+              },
+            ].map((social, index) => (
+              <motion.div
+                key={social.label}
+                whileHover={{ y: -5, scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
+              >
+                <Link
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors"
                 >
-                  <Link
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors"
-                  >
-                    {social.icon}
-                    <span className="sr-only">{social.label}</span>
-                  </Link>
-                </motion.div>
-              ))}
+                  {social.icon}
+                  <span className="sr-only">{social.label}</span>
+                </Link>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </div>
