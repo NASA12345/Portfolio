@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Award, Trophy, Medal, Star, TrendingUp, Target, Code, Award } from "lucide-react"
+import { Trophy, Medal, Star, TrendingUp, Target, Code, Award } from "lucide-react"
 
 const achievements = [
 
