@@ -8,7 +8,7 @@ const achievements = [
 
   {
   title: "Amazon HackOn Season 5",
-  description: "Advanced to the final round of Amazon HackOn Season 5",
+  description: "Finalist Amazon HackOn Season 5",
   icon: <Code className="h-6 w-6" />,
   color: "from-orange-500 to-orange-600",
   link: "",
