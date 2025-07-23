@@ -14,8 +14,8 @@ const achievements = [
   link: "",
   },
   {
-  title: "Mahindra Techathon 2.0",
-  description: "Advanced to the final round of Mahindra Techathon 2.0",
+  title: "Mahindra Catapult Techathon 2.0",
+  description: "Finalist Mahindra Catapult Techathon 2.0",
   icon: <Award className="h-6 w-6" />,
   color: "from-blue-500 to-blue-600",
   link: "",
