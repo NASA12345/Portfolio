@@ -28,6 +28,13 @@ const achievements = [
     link: "",
   },
   {
+  title: "University Merit Scholarship",
+  description: "Awarded for securing a position in the top 5% of students in department during the academic year 2023–24",
+  icon: <Trophy className="h-6 w-6" />,
+  color: "from-yellow-500 to-yellow-600",
+  link: "",
+  },
+  {
     title: "BRICSMATH 2021",
     description: "Secured 1st Rank in the competition",
     icon: <Medal className="h-6 w-6" />,
