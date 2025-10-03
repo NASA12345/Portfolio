@@ -21,6 +21,13 @@ const achievements = [
   link: "",
   },
   {
+  title: "Amazon ML Summer School 2025",
+  description: "Successfully shortlisted for Amazon ML Summer School 2025",
+  icon: <Award className="h-6 w-6" />,
+  color: "from-pink-500 to-pink-600",
+  link: "",
+  },
+  {
     title: "Smart India Hackathon",
     description: "Successfully shortlisted through two internal selection rounds of SIH 2024",
     icon: <Trophy className="h-6 w-6" />,
