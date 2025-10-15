@@ -28,6 +28,15 @@ function getYouTubeThumbnailUrl(url: string): string {
 
 const projects = [
   {
+    title: "LegalEase AI",
+    description:
+      "AI-powered legal document platform with Google Gemini 2.0, real-time Meet transcription, WebSocket streaming and multilingual STT/TTS for multilingual legal analysis.",
+    technologies: ["Next.js", "Firebase", "Socket.io", "Google Gemini"],
+    demoVideo: "https://www.youtube.com/watch?v=t88iDX4M7sQ",
+    githubLink: "https://github.com/TusharSachdeva29/LegalEase-AI",
+    date: "Sept 2025 – Oct 2025",
+  },
+  {
     title: "Sudhaar Web App",
     description:
       "A garbage complaint management and scrap selling platform using Firebase, TypeScript, and Teachable Machine for AI image validation. Integrated Google Auth, LocationIQ for geolocation, and a reward system to promote sustainability. Enabled real-time notifications via Email.js and optimized user interaction using Next.js and Tailwind CSS.",
