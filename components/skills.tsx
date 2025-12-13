@@ -10,14 +10,14 @@ const skillCategories = [
     icon: <Code className="h-5 w-5" />,
     color: "from-blue-500 to-cyan-500",
     darkColor: "from-blue-600 to-cyan-600",
-    skills: ["C++", "Python", "HTML", "CSS", "JavaScript", "TypeScript", "SQL"],
+    skills: ["C++", "Python", "HTML", "CSS", "JavaScript", "SQL"],
   },
   {
     title: "Frameworks",
     icon: <Wrench className="h-5 w-5" />,
     color: "from-purple-500 to-violet-500",
     darkColor: "from-purple-600 to-violet-600",
-    skills: ["React JS", "Next JS", "Node JS", "Express JS", "Firebase", "Kafka"],
+    skills: ["React JS", "Next JS", "Node JS", "Express JS", "Firebase"],
   },
   {
     title: "Databases",

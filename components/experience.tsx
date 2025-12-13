@@ -13,9 +13,9 @@ const experiences = [
     year: "2025",
     location: "Remote",
     description:
-      "Built a real-time GPS tracking system for Mahindra Logistics to monitor delivery fleets across India. Developed RESTful APIs (Express.js), implemented a Kafka-based streaming pipeline, and managed MySQL operations using Drizzle ORM for reliable and scalable logistics data handling.",
+      "Built a real-time GPS tracking system for Mahindra Logistics to monitor delivery fleets across India. Developed RESTful APIs (Express.js) and managed MySQL operations using Drizzle ORM for reliable and scalable logistics data handling.",
     link: "https://www.mahindralogistics.com/",
-    skills: ["React.js", "Node.js", "Express.js", "Kafka", "MySQL", "Drizzle ORM"],
+    skills: ["React.js", "Node.js", "Express.js", "MySQL", "Drizzle ORM"],
   },
   {
     position: "Contributor",

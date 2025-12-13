@@ -39,8 +39,8 @@ const projects = [
   {
     title: "Sudhaar Web App",
     description:
-      "A garbage complaint management and scrap selling platform using Firebase, TypeScript, and Teachable Machine for AI image validation. Integrated Google Auth, LocationIQ for geolocation, and a reward system to promote sustainability. Enabled real-time notifications via Email.js and optimized user interaction using Next.js and Tailwind CSS.",
-    technologies: ["Next.js", "Node.js", "Firebase", "ML", "TypeScript"],
+      "A garbage complaint management and scrap selling platform using Firebase and Teachable Machine for AI image validation. Integrated Google Auth, LocationIQ for geolocation, and a reward system to promote sustainability. Enabled real-time notifications via Email.js and optimized user interaction using Next.js and Tailwind CSS.",
+    technologies: ["Next.js", "Node.js", "Firebase", "ML"],
     demoVideo: "https://www.youtube.com/watch?v=BV8J19NB6cw",
     githubLink: "https://github.com/JaiBansal007/Sudhar-App",
     date: "Sept 2024 – Oct 2024",
