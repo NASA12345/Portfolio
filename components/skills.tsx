@@ -10,7 +10,7 @@ const skillCategories = [
     icon: <Code className="h-5 w-5" />,
     color: "from-blue-500 to-cyan-500",
     darkColor: "from-blue-600 to-cyan-600",
-    skills: ["C++", "Python", "HTML", "CSS", "JavaScript", "SQL"],
+    skills: ["C++", "Python", "HTML", "CSS", "JavaScript", "TypeScript", "SQL"],
   },
   {
     title: "Frameworks",

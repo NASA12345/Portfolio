@@ -21,18 +21,25 @@ const achievements = [
   link: "",
   },
   {
+    title: "Thales GenTech India Hackathon 2025",
+    description: "Qualified for Finals Thales GenTech India Hackathon 2025",
+    icon: <Trophy className="h-6 w-6" />,
+    color: "from-green-500 to-green-600",
+    link: "",
+  },
+  {
+    title: "Tata Imagination 2025",
+    description: "Semi Finalist Tata Imagination 2025",
+    icon: <Medal className="h-6 w-6" />,
+    color: "from-indigo-500 to-indigo-600",
+    link: "",
+  },
+  {
   title: "Amazon ML Summer School 2025",
   description: "Successfully shortlisted for Amazon ML Summer School 2025",
   icon: <Award className="h-6 w-6" />,
   color: "from-pink-500 to-pink-600",
   link: "",
-  },
-  {
-    title: "Smart India Hackathon",
-    description: "Successfully shortlisted through two internal selection rounds of SIH 2024",
-    icon: <Trophy className="h-6 w-6" />,
-    color: "from-green-500 to-green-600",
-    link: "",
   },
   {
   title: "University Merit Scholarship",
