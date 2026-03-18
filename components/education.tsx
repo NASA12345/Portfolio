@@ -10,7 +10,7 @@ const education = [
     degree: "Bachelor of Technology in Computer Science and Engineering",
     duration: "Aug 2023 – July 2027",
     location: "Delhi, India",
-    grade: "8.81 GPA",
+    grade: "8.85 GPA",
     year: "2027",
   },
   {
