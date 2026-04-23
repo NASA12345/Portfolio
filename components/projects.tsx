@@ -28,6 +28,15 @@ function getYouTubeThumbnailUrl(url: string): string {
 
 const projects = [
   {
+    title: "Black Box : IoT Smart Cargo Tracker",
+    description:
+      "BlackBox is a real-time shipment monitoring platform that combines ESP32 BLE sensor data, driver GPS tracking, and Firestore live sync to generate instant risk alerts and tamper-evident trip records for insurance operations.",
+    technologies: ["React.js", "Firebase", "ESP32 Microcontroller"],
+    demoVideo: "https://www.youtube.com/watch?v=NZF8RdI5t04",
+    githubLink: "https://github.com/NASA12345/BlackBox-IoT/tree/main",
+    date: "Mar 2026 - Apr 2026",
+  },
+  {
     title: "LegalEase AI",
     description:
       "AI-powered legal document platform with Google Gemini 2.0, real-time Meet transcription, WebSocket streaming and multilingual STT/TTS for multilingual legal analysis.",
