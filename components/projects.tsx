@@ -145,7 +145,7 @@ export default function Projects() {
               A curated selection of product work, systems projects, and experiments with real-world constraints.
             </p>
 
-            <div className="mt-6 inline-flex rounded-full border border-neutral-800 bg-black p-1 shadow-sm">
+            <div className="mt-6 inline-flex rounded-full border border-neutral-800 p-1 shadow-sm">
               {[
                 { key: "self", label: "Self" },
                 { key: "hackathon", label: "Hackathon" },
@@ -156,7 +156,7 @@ export default function Projects() {
                   className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                     activeTab === tab.key
                       ? "text-white"
-                      : "text-neutral-400 hover:text-neutral-200"
+                      : "text-black hover:text-foreground/80"
                   }`}
                 >
                   {tab.label}

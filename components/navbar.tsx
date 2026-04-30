@@ -159,7 +159,7 @@ export default function Navbar() {
                 <motion.span
                   layoutId="desktopActiveNav"
                   className="absolute inset-0 -z-10 rounded-full bg-foreground shadow-sm"
-                  transition={{ type: "spring", stiffness: 380, damping: 28 }}
+                  transition={{ type: "tween", duration: 0.2 }}
                 />
               )}
             </button>
