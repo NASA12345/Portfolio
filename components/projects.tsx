@@ -37,6 +37,15 @@ const projects = [
     date: "Mar 2026 - Apr 2026",
   },
   {
+    title: "UDAAN-AI",
+    description:
+      "UDAAN-AI is an AI-driven unified intelligence platform that seamlessly integrates GPS, drone, and air traffic data into a single ecosystem. It provides real-time tracking, predictive analytics, and smart alerting for fleets and UAVs, helping agencies monitor, predict, and optimize aerial and ground operations.",
+    technologies: ["React.js", "Node.js", "Express.js", "MySQL"],
+    demoVideo: "https://www.youtube.com/watch?v=Wvbfp_NW3Bc",
+    githubLink: "https://github.com/NASA12345/Udaan-AI",
+    date: "Sept 2025 - Oct 2025",
+  },
+  {
     title: "Sudhaar Web App",
     description:
       "A garbage complaint management and scrap selling platform using Firebase and Teachable Machine for AI image validation. Integrated Google Auth, LocationIQ for geolocation, and a reward system to promote sustainability. Enabled real-time notifications via Email.js and optimized user interaction using Next.js and Tailwind CSS.",
