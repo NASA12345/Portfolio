@@ -39,7 +39,7 @@ const projects = [
   {
     title: "UDAAN-AI",
     description:
-      "BlackBox is a real-time shipment monitoring platform that combines ESP32 BLE sensor data, driver GPS tracking, and Firestore live sync to generate instant risk alerts and tamper-evident trip records for insurance operations.",
+      "UDAAN-AI is an AI-driven unified intelligence platform that seamlessly integrates GPS, drone, and air traffic data into a single ecosystem. It provides real-time tracking, predictive analytics, and smart alerting for fleets and UAVs, helping agencies monitor, predict, and optimize aerial and ground operations.",
     technologies: ["React.js", "Node.js", "Express.js", "MySQL"],
     demoVideo: "https://www.youtube.com/watch?v=Wvbfp_NW3Bc",
     githubLink: "https://github.com/NASA12345/Udaan-AI",
