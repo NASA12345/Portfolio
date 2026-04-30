@@ -28,72 +28,70 @@ export default function About() {
   }
 
   return (
-    <section id="about" ref={ref} className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-gray-50 to-transparent dark:from-gray-800 dark:to-transparent z-0"></div>
-      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-gray-50 to-transparent dark:from-gray-800 dark:to-transparent z-0"></div>
-      <div className="absolute -left-32 top-1/4 w-64 h-64 bg-purple-200 dark:bg-purple-900/20 rounded-full filter blur-3xl opacity-30 z-0"></div>
-      <div className="absolute -right-32 bottom-1/4 w-64 h-64 bg-indigo-200 dark:bg-indigo-900/20 rounded-full filter blur-3xl opacity-30 z-0"></div>
+    <section id="about" ref={ref} className="section-shell relative overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background via-background/90 to-transparent" />
+      <div className="absolute -left-24 top-1/4 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+      <div className="absolute -right-24 bottom-1/4 h-72 w-72 rounded-full bg-sky-500/10 blur-3xl" />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="max-w-4xl mx-auto"
+          className="mx-auto max-w-6xl"
         >
-          <motion.div variants={itemVariants} className="text-center mb-12">
+          <motion.div variants={itemVariants} className="mb-10 text-center">
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
               animate={inView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
-              className="inline-block mb-2"
+              className="inline-block mb-3"
             >
-              <span className="inline-block px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full text-sm font-medium">
-                About Me
-              </span>
+              <span className="section-kicker">About Me</span>
             </motion.div>
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Who I Am</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-indigo-600 mx-auto mb-4"></div>
+            <h2 className="section-title text-foreground">Who I Am</h2>
+            <p className="section-lead mx-auto mt-4 max-w-2xl">
+              A compact overview of my background, current focus, and the kind of work I enjoy doing most.
+            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-3">
             {/* Profile Card */}
             <motion.div
               variants={itemVariants}
-              className="md:col-span-1 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700 overflow-hidden hover-lift"
+              className="panel-soft md:col-span-1 overflow-hidden rounded-[1.75rem] hover-lift"
             >
-              <div className="p-6 flex flex-col h-full">
-                <div className="flex items-center mb-4">
-                  <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-xl mr-4">
-                    <User className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+              <div className="flex h-full flex-col p-6">
+                <div className="mb-4 flex items-center">
+                  <div className="mr-4 rounded-2xl bg-primary/10 p-3">
+                    <User className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Nayan Jindal</h3>
+                  <h3 className="text-xl font-semibold text-foreground">Nayan Jindal</h3>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 text-sm mb-6">
+                <p className="mb-6 text-sm text-muted-foreground">
                   Computer Science student at NSUT with a passion for software development and problem-solving.
                 </p>
 
                 {/* Contact Info */}
                 <div className="mt-auto space-y-3">
-                  <div className="flex items-center p-3 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700">
-                    <div className="mr-3 p-2 rounded-lg bg-gray-100 dark:bg-gray-700">
-                      <Mail className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+                  <div className="flex items-center rounded-2xl border border-border bg-background/60 p-3">
+                    <div className="mr-3 rounded-xl bg-primary/10 p-2">
+                      <Mail className="h-4 w-4 text-primary" />
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">Email</p>
-                      <p className="text-gray-700 dark:text-gray-300 text-sm font-medium">nayan11404@gmail.com</p>
+                      <p className="text-xs text-muted-foreground">Email</p>
+                      <p className="text-sm font-medium text-foreground">nayan11404@gmail.com</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center p-3 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700">
-                    <div className="mr-3 p-2 rounded-lg bg-gray-100 dark:bg-gray-700">
-                      <MapPin className="h-4 w-4 text-violet-600 dark:text-violet-400" />
+                  <div className="flex items-center rounded-2xl border border-border bg-background/60 p-3">
+                    <div className="mr-3 rounded-xl bg-sky-500/10 p-2">
+                      <MapPin className="h-4 w-4 text-sky-600" />
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">Location</p>
-                      <p className="text-gray-700 dark:text-gray-300 text-sm font-medium">Delhi, India</p>
+                      <p className="text-xs text-muted-foreground">Location</p>
+                      <p className="text-sm font-medium text-foreground">Delhi, India</p>
                     </div>
                   </div>
                 </div>
@@ -104,7 +102,7 @@ export default function About() {
                     href="https://github.com/NASA12345"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-100 hover:text-purple-600 dark:hover:bg-purple-900/30 dark:hover:text-purple-400 transition-colors"
+                    className="rounded-full border border-border bg-background/70 p-2 text-muted-foreground transition-colors hover:border-primary/30 hover:text-primary"
                   >
                     <Github className="h-5 w-5" />
                     <span className="sr-only">GitHub</span>
@@ -113,7 +111,7 @@ export default function About() {
                     href="https://www.linkedin.com/in/nayan-jindal/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-100 hover:text-purple-600 dark:hover:bg-purple-900/30 dark:hover:text-purple-400 transition-colors"
+                    className="rounded-full border border-border bg-background/70 p-2 text-muted-foreground transition-colors hover:border-primary/30 hover:text-primary"
                   >
                     <Linkedin className="h-5 w-5" />
                     <span className="sr-only">LinkedIn</span>
@@ -122,27 +120,22 @@ export default function About() {
               </div>
             </motion.div>
 
-            {/* Skills & Experience Summary */}
-            <motion.div
-              variants={itemVariants}
-              className="md:col-span-2 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700 overflow-hidden hover-lift"
-            >
-              <div className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Technical Skills */}
+            <motion.div variants={itemVariants} className="panel-soft overflow-hidden rounded-[1.75rem] hover-lift md:col-span-2">
+              <div className="p-6 md:p-8">
+                <div className="grid gap-6 md:grid-cols-2">
                   <div>
-                    <div className="flex items-start mb-4">
-                      <div className="bg-indigo-100 dark:bg-indigo-900/30 p-3 rounded-xl mr-4">
-                        <Code className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+                    <div className="mb-4 flex items-start">
+                      <div className="mr-4 rounded-2xl bg-primary/10 p-3">
+                        <Code className="h-6 w-6 text-primary" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Technical Skills</h3>
+                        <h3 className="mb-2 text-lg font-semibold text-foreground">Technical Skills</h3>
                         <div className="flex flex-wrap gap-2">
                           {["C++", "Python", "JavaScript", "React", "Next.js", "Express.js", "MySQL"].map(
                             (skill, index) => (
                               <span
                                 key={index}
-                                className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium"
+                                className="rounded-full border border-border bg-background/70 px-2 py-1 text-xs font-medium text-muted-foreground"
                               >
                                 {skill}
                               </span>
@@ -150,54 +143,49 @@ export default function About() {
                           )}
                           <Link
                             href="#skills"
-                            className="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full text-xs font-medium flex items-center"
+                            className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-2 py-1 text-xs font-medium text-primary"
                           >
-                            More <ExternalLink className="h-3 w-3 ml-1" />
+                            More <ExternalLink className="ml-1 h-3 w-3" />
                           </Link>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Experience */}
                   <div>
-                    <div className="flex items-start mb-4">
-                      <div className="bg-violet-100 dark:bg-violet-900/30 p-3 rounded-xl mr-4">
-                        <Briefcase className="h-6 w-6 text-violet-600 dark:text-violet-400" />
+                    <div className="mb-4 flex items-start">
+                      <div className="mr-4 rounded-2xl bg-sky-500/10 p-3">
+                        <Briefcase className="h-6 w-6 text-sky-600" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Experience</h3>
-                        <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        <h3 className="mb-2 text-lg font-semibold text-foreground">Experience</h3>
+                        <p className="text-sm text-muted-foreground">
                           Currently working as Software Developer Intern at Mahindra Logistics, developing real-time GPS
                           tracking systems and scalable data pipelines.
                         </p>
-                        <Link
-                          href="#experience"
-                          className="mt-2 inline-flex items-center text-sm text-purple-600 dark:text-purple-400 hover:underline"
-                        >
-                          View details <ExternalLink className="h-3 w-3 ml-1" />
+                        <Link href="#experience" className="mt-2 inline-flex items-center text-sm font-medium text-primary hover:underline">
+                          View details <ExternalLink className="ml-1 h-3 w-3" />
                         </Link>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Education Summary */}
-                <div className="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700">
+                <div className="mt-6 border-t border-border pt-6">
                   <div className="flex items-start">
-                    <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-xl mr-4">
-                      <User className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                    <div className="mr-4 rounded-2xl bg-emerald-500/10 p-3">
+                      <User className="h-6 w-6 text-emerald-600" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">About Me</h3>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                      <h3 className="mb-2 text-lg font-semibold text-foreground">About Me</h3>
+                      <p className="mb-3 text-sm text-muted-foreground">
                         Computer Science student at NSUT with a passion for web development, competitive programming,
                         and open-source contributions. Currently working on real-time systems and scalable backend
                         architectures.
                       </p>
 
-                      <div className="mt-4 p-4 rounded-xl bg-purple-50 dark:bg-purple-900/10 border border-purple-100 dark:border-purple-800/20">
-                        <p className="text-purple-700 dark:text-purple-400 text-sm italic">
+                      <div className="mt-4 rounded-2xl border border-primary/15 bg-primary/8 p-4">
+                        <p className="text-sm italic text-foreground/90">
                           "I believe in creating technology that makes a positive impact on people's lives."
                         </p>
                       </div>

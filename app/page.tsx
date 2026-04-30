@@ -80,7 +80,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="min-h-screen">
+    <main className="site-shell min-h-screen">
       <Navbar />
       <Hero />
       <About />

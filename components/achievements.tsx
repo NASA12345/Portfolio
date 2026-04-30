@@ -2,64 +2,63 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Trophy, Medal, Star, TrendingUp, Target, Code, Award } from "lucide-react"
+import { Trophy, Medal, Target, Code, Award } from "lucide-react"
 
 const achievements = [
-
   {
-  title: "Amazon HackOn Season 5",
-  description: "Finalist Amazon HackOn Season 5",
-  icon: <Code className="h-6 w-6" />,
-  color: "from-orange-500 to-orange-600",
-  link: "",
+    title: "Amazon HackOn Season 5",
+    description: "Finalist Amazon HackOn Season 5.",
+    icon: <Code className="h-6 w-6" />,
+    label: "Hackathon",
+    link: "",
   },
   {
-  title: "Mahindra Catapult Techathon 2.0",
-  description: "Finalist Mahindra Catapult Techathon 2.0",
-  icon: <Award className="h-6 w-6" />,
-  color: "from-blue-500 to-blue-600",
-  link: "",
+    title: "Mahindra Catapult Techathon 2.0",
+    description: "Finalist Mahindra Catapult Techathon 2.0.",
+    icon: <Award className="h-6 w-6" />,
+    label: "Hackathon",
+    link: "",
   },
   {
     title: "Thales GenTech India Hackathon 2025",
-    description: "Qualified for Finals Thales GenTech India Hackathon 2025",
+    description: "Qualified for finals at Thales GenTech India Hackathon 2025.",
     icon: <Trophy className="h-6 w-6" />,
-    color: "from-green-500 to-green-600",
+    label: "Hackathon",
     link: "",
   },
   {
     title: "Tata Imagination 2025",
-    description: "Semi Finalist Tata Imagination 2025",
+    description: "Semi-finalist at Tata Imagination 2025.",
     icon: <Medal className="h-6 w-6" />,
-    color: "from-indigo-500 to-indigo-600",
+    label: "Hackathon",
     link: "",
   },
   {
-  title: "Amazon ML Summer School 2025",
-  description: "Successfully shortlisted for Amazon ML Summer School 2025",
-  icon: <Award className="h-6 w-6" />,
-  color: "from-pink-500 to-pink-600",
-  link: "",
+    title: "Amazon ML Summer School 2025",
+    description: "Successfully shortlisted for Amazon ML Summer School 2025.",
+    icon: <Award className="h-6 w-6" />,
+    label: "ML",
+    link: "",
   },
   {
-  title: "University Merit Scholarship",
-  description: "Awarded for securing a position in the top 5% of students in department during the academic year 2023–24",
-  icon: <Trophy className="h-6 w-6" />,
-  color: "from-yellow-500 to-yellow-600",
-  link: "",
+    title: "University Merit Scholarship",
+    description: "Awarded for securing a position in the top 5% of students in the department during 2023–24.",
+    icon: <Trophy className="h-6 w-6" />,
+    label: "Scholarship",
+    link: "",
   },
   {
     title: "BRICSMATH 2021",
-    description: "Secured 1st Rank in the competition",
+    description: "Secured 1st rank in the competition.",
     icon: <Medal className="h-6 w-6" />,
-    color: "from-purple-500 to-purple-600",
+    label: "Competition",
     link: "",
   },
   {
     title: "SOF-IMO 2021-22",
-    description: "Secured 2nd Rank in the International Mathematics Olympiad",
+    description: "Secured 2nd rank in the International Mathematics Olympiad.",
     icon: <Target className="h-6 w-6" />,
-    color: "from-red-500 to-red-600",
+    label: "Olympiad",
     link: "",
   },
 ]
@@ -86,76 +85,57 @@ export default function Achievements() {
   }
 
   return (
-    <section id="achievements" ref={ref} className="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-white to-transparent dark:from-gray-900 dark:to-transparent"></div>
-      <div className="absolute -left-20 top-1/3 w-40 h-40 bg-purple-200/50 dark:bg-purple-900/20 rounded-full filter blur-3xl"></div>
-      <div className="absolute -right-20 bottom-1/3 w-40 h-40 bg-blue-200/50 dark:bg-blue-900/20 rounded-full filter blur-3xl"></div>
+    <section id="achievements" ref={ref} className="section-shell relative overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background via-background/90 to-transparent" />
+      <div className="absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+      <div className="absolute -right-24 bottom-1/3 h-72 w-72 rounded-full bg-sky-500/10 blur-3xl" />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="max-w-4xl mx-auto"
+          className="mx-auto max-w-6xl"
         >
-          <motion.div className="text-center mb-16">
+          <motion.div className="mb-12 text-center">
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
               animate={inView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
-              className="inline-block mb-2"
+              className="inline-block mb-3"
             >
-              <span className="inline-block px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full text-sm font-medium">
-                Recognition
-              </span>
+              <span className="section-kicker">Recognition</span>
             </motion.div>
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Achievements</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-indigo-600 mx-auto mb-4"></div>
+            <h2 className="section-title text-foreground">Achievements</h2>
+            <p className="section-lead mx-auto mt-4 max-w-2xl">A simple snapshot of a few recognitions and wins.</p>
           </motion.div>
 
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            className="grid gap-4 sm:grid-cols-2"
           >
             {achievements.map((achievement, index) => (
-              <motion.a
-                key={index}
-                href={achievement.link || "#"}
-                target={achievement.link ? "_blank" : undefined}
-                rel={achievement.link ? "noopener noreferrer" : undefined}
+              <motion.div
+                key={achievement.title}
                 variants={itemVariants}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative group overflow-hidden rounded-2xl ${!achievement.link ? "pointer-events-none" : ""}`}
+                transition={{ duration: 0.35, delay: index * 0.05 }}
+                className="panel-soft rounded-[1.5rem] p-5 transition-transform hover:-translate-y-0.5"
               >
-                <motion.div
-                  className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700 overflow-hidden h-full"
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  {/* Top colored bar */}
-                  <div className={`h-2 bg-gradient-to-r ${achievement.color}`}></div>
-
-                  <div className="p-6">
-                    <div className="flex items-start">
-                      <div className={`p-3 rounded-xl bg-gradient-to-br ${achievement.color} text-white mr-4`}>
-                        {achievement.icon}
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-bold text-gray-900 dark:text-white">{achievement.title}</h3>
-                        <p className="text-gray-600 dark:text-gray-300 mt-1">{achievement.description}</p>
-                      </div>
-                    </div>
-
-                    {/* Shine effect on hover */}
-                    <div className="absolute -inset-x-1 -inset-y-1 z-0 hidden group-hover:block">
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg] translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
-                    </div>
+                <div className="flex items-start gap-4">
+                  <div className="inline-flex rounded-xl border border-border bg-muted/70 p-2.5 text-foreground">
+                    {achievement.icon}
                   </div>
-                </motion.div>
-              </motion.a>
+                  <div className="min-w-0">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                      {achievement.label}
+                    </p>
+                    <h4 className="mt-1 text-base font-semibold leading-6 text-foreground">{achievement.title}</h4>
+                    <p className="mt-2 text-sm leading-6 text-muted-foreground">{achievement.description}</p>
+                  </div>
+                </div>
+              </motion.div>
             ))}
           </motion.div>
 
@@ -165,12 +145,7 @@ export default function Achievements() {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="mt-12 text-center"
           >
-            <div className="inline-flex items-center justify-center p-4 bg-white dark:bg-gray-900 rounded-full shadow-md">
-              <Award className="h-6 w-6 text-purple-600 dark:text-purple-400" />
-            </div>
-            <p className="text-gray-600 dark:text-gray-400 mt-4">
-              Continuously striving for excellence and new challenges
-            </p>
+            <p className="text-sm text-muted-foreground">Continuously striving for excellence and new challenges.</p>
           </motion.div>
         </motion.div>
       </div>

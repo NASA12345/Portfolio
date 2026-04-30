@@ -52,39 +52,38 @@ export default function Experience() {
   }
 
   return (
-    <section id="experience" ref={ref} className="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-white to-transparent dark:from-gray-900 dark:to-transparent"></div>
-      <div className="absolute -left-20 top-1/3 w-40 h-40 bg-purple-200/50 dark:bg-purple-900/20 rounded-full filter blur-3xl"></div>
-      <div className="absolute -right-20 bottom-1/3 w-40 h-40 bg-blue-200/50 dark:bg-blue-900/20 rounded-full filter blur-3xl"></div>
+    <section id="experience" ref={ref} className="section-shell relative overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background via-background/90 to-transparent" />
+      <div className="absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+      <div className="absolute -right-24 bottom-1/3 h-72 w-72 rounded-full bg-sky-500/10 blur-3xl" />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="max-w-4xl mx-auto"
+          className="mx-auto max-w-6xl"
         >
-          <motion.div className="text-center mb-16">
+          <motion.div className="mb-12 text-center">
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
               animate={inView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
-              className="inline-block mb-2"
+              className="inline-block mb-3"
             >
-              <span className="inline-block px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full text-sm font-medium">
-                Professional Path
-              </span>
+              <span className="section-kicker">Professional Path</span>
             </motion.div>
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Work Experience</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-indigo-600 mx-auto mb-4"></div>
+            <h2 className="section-title text-foreground">Work Experience</h2>
+            <p className="section-lead mx-auto mt-4 max-w-2xl">
+              Selected roles and contributions that show how I work in production settings.
+            </p>
           </motion.div>
 
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
-            className="space-y-12"
+            className="space-y-10"
           >
             {experiences.map((exp, index) => (
               <motion.div
@@ -93,43 +92,42 @@ export default function Experience() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative"
               >
-                <div className="flex flex-col md:flex-row gap-6">
+                <div className="timeline-rail flex flex-col gap-6 md:flex-row">
                   {/* Year indicator */}
-                  <div className="hidden md:block flex md:flex-col items-center md:items-start">
-                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-900/30 dark:to-indigo-900/30 border-2 border-purple-500 dark:border-purple-700 shadow-md">
-                      <span className="text-lg font-bold text-purple-700 dark:text-purple-400">
+                  <div className="hidden md:flex md:flex-col items-center md:items-start">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full border border-primary/30 bg-primary/10 shadow-sm">
+                      <span className="text-lg font-bold text-primary">
                         {exp.year}
                       </span>
                     </div>
                     {index !== experiences.length - 1 && (
-                      <div className="hidden md:block w-0.5 h-20 bg-gradient-to-b from-purple-500 to-indigo-500 mx-auto mt-2"></div>
+                      <div className="hidden md:block w-0.5 h-20 bg-gradient-to-b from-primary/70 to-sky-500/70 mx-auto mt-2"></div>
                     )}
                   </div>
 
                   {/* Content */}
                   <motion.div
-                    className="flex-1 bg-white dark:bg-gray-900 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700 overflow-hidden"
+                    className="panel-soft flex-1 overflow-hidden rounded-[1.75rem]"
                     whileHover={{
                       y: -5,
                       boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
                     }}
                   >
-                    {/* Top colored bar */}
-                    <div className="h-2 bg-gradient-to-r from-purple-600 to-indigo-600"></div>
+                    <div className="h-1.5 bg-gradient-to-r from-primary via-sky-500 to-emerald-500" />
 
-                    <div className="p-6">
+                    <div className="p-6 md:p-7">
                       {/* Position */}
                       <div className="flex items-start">
                         <div>
-                          <h3 className="text-xl font-bold text-gray-900 dark:text-white">{exp.position}</h3>
+                          <h3 className="text-xl font-bold text-foreground">{exp.position}</h3>
                           <div className="flex items-center mt-1">
-                            <span className="text-purple-600 dark:text-purple-400 font-medium">{exp.company}</span>
+                            <span className="font-medium text-primary">{exp.company}</span>
                             {exp.link && (
                               <Link
                                 href={exp.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="ml-2 text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
+                                className="ml-2 text-muted-foreground hover:text-primary"
                               >
                                 <ExternalLink className="h-4 w-4" />
                               </Link>
@@ -140,25 +138,25 @@ export default function Experience() {
 
                       {/* Details */}
                       <div className="mt-4 space-y-4">
-                        <div className="flex flex-wrap gap-2 text-sm text-gray-600 dark:text-gray-300">
+                        <div className="flex flex-wrap gap-2 text-sm text-muted-foreground">
                           <div className="flex items-center mr-4">
-                            <Calendar className="h-4 w-4 mr-1 text-purple-600 dark:text-purple-400" />
+                            <Calendar className="h-4 w-4 mr-1 text-primary" />
                             {exp.duration}
                           </div>
                           <div className="flex items-center">
-                            <MapPin className="h-4 w-4 mr-1 text-indigo-600 dark:text-indigo-400" />
+                            <MapPin className="h-4 w-4 mr-1 text-sky-600" />
                             {exp.location}
                           </div>
                         </div>
 
-                        <p className="text-gray-600 dark:text-gray-300">{exp.description}</p>
+                        <p className="text-muted-foreground">{exp.description}</p>
 
                         {/* Skills */}
-                        <div className="flex flex-wrap gap-2 mt-4">
+                        <div className="mt-4 flex flex-wrap gap-2">
                           {exp.skills.map((skill, skillIndex) => (
                             <span
                               key={skillIndex}
-                              className="px-3 py-1 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded-full text-xs font-medium"
+                              className="rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground"
                             >
                               {skill}
                             </span>

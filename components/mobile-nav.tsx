@@ -83,10 +83,10 @@ export default function MobileNav() {
   if (!mounted) return null
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-glass shadow-lg border-t border-gray-200 dark:border-gray-700">
+    <div className="fixed bottom-3 left-3 right-3 z-50 md:hidden rounded-[1.5rem] border border-border bg-card/80 shadow-2xl backdrop-blur-2xl">
       <div
         ref={scrollContainerRef}
-        className="flex overflow-x-auto py-2 px-4 scrollbar-hide"
+        className="flex overflow-x-auto py-2 px-2 scrollbar-hide"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {navItems.map((item) => (
@@ -94,10 +94,10 @@ export default function MobileNav() {
             key={item.name}
             id={`mobile-nav-${item.href.substring(1)}`}
             onClick={() => scrollToSection(item.href.substring(1))}
-            className={`flex flex-col items-center justify-center min-w-[4.5rem] px-3 py-2 mx-1 rounded-lg transition-colors relative ${
+            className={`flex flex-col items-center justify-center min-w-[4.5rem] px-3 py-2 mx-1 rounded-2xl transition-colors relative ${
               activeSection === item.href.substring(1)
-                ? "bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400"
-                : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/50"
+                ? "bg-primary/10 text-primary"
+                : "text-muted-foreground hover:bg-accent/70 hover:text-foreground"
             }`}
           >
             {item.icon}
@@ -105,7 +105,7 @@ export default function MobileNav() {
             {activeSection === item.href.substring(1) && (
               <motion.div
                 layoutId="mobileActiveSection"
-                className="absolute bottom-0 left-0 right-0 mx-auto w-10 h-0.5 bg-purple-600 dark:bg-purple-400"
+                className="absolute bottom-0 left-0 right-0 mx-auto w-10 h-0.5 bg-primary dark:bg-primary/80 rounded-full"
                 style={{ bottom: "2px" }}
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />

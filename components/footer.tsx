@@ -19,61 +19,36 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gray-900 text-white py-10">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-4">Nayan Jindal</h2>
-          <p className="text-gray-400 mb-6">Computer Science Student & Developer</p>
+    <footer className="border-t border-border bg-background/80 py-8 backdrop-blur-xl">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-3xl flex-col items-center justify-center gap-4 text-center">
+          <div className="space-y-1">
+            <p className="text-sm font-semibold text-foreground">Nayan Jindal</p>
+            <p className="mt-1 text-sm text-muted-foreground">Computer Science Student and Developer</p>
+          </div>
 
-          <div className="flex justify-center space-x-6 mb-8">
+          <div className="flex items-center justify-center gap-3">
             <a
               href="https://github.com/NASA12345"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors hover:border-foreground hover:text-foreground"
             >
-              <Github className="h-6 w-6" />
+              <Github className="h-4 w-4" />
               <span className="sr-only">GitHub</span>
             </a>
             <a
               href="https://www.linkedin.com/in/nayan-jindal/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors hover:border-foreground hover:text-foreground"
             >
-              <Linkedin className="h-6 w-6" />
+              <Linkedin className="h-4 w-4" />
               <span className="sr-only">LinkedIn</span>
             </a>
           </div>
 
-          <div className="flex justify-center space-x-4 mb-6">
-            <button
-              onClick={() => scrollToSection("home")}
-              className="text-sm text-gray-400 hover:text-white transition-colors"
-            >
-              Home
-            </button>
-            <button
-              onClick={() => scrollToSection("about")}
-              className="text-sm text-gray-400 hover:text-white transition-colors"
-            >
-              About
-            </button>
-            <button
-              onClick={() => scrollToSection("skills")}
-              className="text-sm text-gray-400 hover:text-white transition-colors"
-            >
-              Skills
-            </button>
-            <button
-              onClick={() => scrollToSection("projects")}
-              className="text-sm text-gray-400 hover:text-white transition-colors"
-            >
-              Projects
-            </button>
-          </div>
-
-          <p className="text-gray-500 text-sm">&copy; {new Date().getFullYear()} Nayan Jindal. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()}</p>
         </div>
       </div>
     </footer>

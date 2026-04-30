@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer"
 import { Github, Calendar, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { useMemo, useState } from "react"
 
 // Helper function to extract YouTube video ID
 function getYouTubeVideoId(url: string): string {
@@ -28,6 +29,27 @@ function getYouTubeThumbnailUrl(url: string): string {
 
 const projects = [
   {
+    category: "hackathon",
+    title: "FireTV",
+    description:
+      "A scalable Amazon HackOn Season 5 project for synchronized video playback, real-time chat, mood-based recommendations, video summarization, and gamified engagement built on a cloud-native distributed architecture.",
+    technologies: ["React", "Socket.io", "Redis", "AWS", "DynamoDB", "Cognito"],
+    demoVideo: "https://www.youtube.com/watch?v=5vkd3C3EMcg",
+    //githubLink: "https://github.com/JaiBansal007/Hackon",
+    date: "Amazon HackOn Season 5",
+  },
+  {
+    category: "hackathon",
+    title: "LegalEase AI",
+    description:
+      "AI-powered legal document platform with Google Gemini 2.0, real-time Meet transcription, WebSocket streaming and multilingual STT/TTS for multilingual legal analysis.",
+    technologies: ["Next.js", "Firebase", "Socket.io", "Google Gemini"],
+    demoVideo: "https://www.youtube.com/watch?v=t88iDX4M7sQ",
+    githubLink: "https://github.com/NASA12345/LegalEase-AI",
+    date: "Sept 2025 – Oct 2025",
+  },
+  {
+    category: "self",
     title: "Black Box : IoT Smart Cargo Tracker",
     description:
       "BlackBox is a real-time shipment monitoring platform that combines ESP32 BLE sensor data, driver GPS tracking, and Firestore live sync to generate instant risk alerts and tamper-evident trip records for insurance operations.",
@@ -37,15 +59,17 @@ const projects = [
     date: "Mar 2026 - Apr 2026",
   },
   {
+    category: "self",
     title: "UDAAN-AI",
     description:
       "UDAAN-AI is an AI-driven unified intelligence platform that seamlessly integrates GPS, drone, and air traffic data into a single ecosystem. It provides real-time tracking, predictive analytics, and smart alerting for fleets and UAVs, helping agencies monitor, predict, and optimize aerial and ground operations.",
-    technologies: ["React.js", "Node.js", "Express.js", "MySQL"],
+    technologies: ["React.js", "Node.js", "Express.js", "MySQL", "Docker", "Apache Kafka"],
     demoVideo: "https://www.youtube.com/watch?v=Wvbfp_NW3Bc",
     githubLink: "https://github.com/NASA12345/Udaan-AI",
     date: "Sept 2025 - Oct 2025",
   },
   {
+    category: "self",
     title: "Sudhaar Web App",
     description:
       "A garbage complaint management and scrap selling platform using Firebase and Teachable Machine for AI image validation. Integrated Google Auth, LocationIQ for geolocation, and a reward system to promote sustainability. Enabled real-time notifications via Email.js and optimized user interaction using Next.js and Tailwind CSS.",
@@ -55,6 +79,7 @@ const projects = [
     date: "Sept 2024 – Oct 2024",
   },
   {
+    category: "self",
     title: "SocialCalc",
     description:
       "Built a real-time collaborative spreadsheet web app with live formula support and seamless multi-user editing using React.js, Tailwind CSS, and Firebase. Designed a responsive UI and integrated Firebase for real-time sync and authentication to ensure a smooth and scalable user experience.",
@@ -66,6 +91,7 @@ const projects = [
 ]
 
 export default function Projects() {
+  const [activeTab, setActiveTab] = useState<"self" | "hackathon">("self")
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,
@@ -87,33 +113,63 @@ export default function Projects() {
     visible: { opacity: 1, y: 0 },
   }
 
-  return (
-    <section id="projects" ref={ref} className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-gray-50 to-transparent dark:from-gray-800 dark:to-transparent"></div>
-      <div className="absolute -left-20 top-1/3 w-40 h-40 bg-purple-200/50 dark:bg-purple-900/20 rounded-full filter blur-3xl"></div>
-      <div className="absolute -right-20 bottom-1/3 w-40 h-40 bg-blue-200/50 dark:bg-blue-900/20 rounded-full filter blur-3xl"></div>
+  const visibleProjects = useMemo(
+    () => projects.filter((project) => project.category === activeTab),
+    [activeTab],
+  )
 
-      <div className="container mx-auto px-4 relative z-10">
+  return (
+    <section id="projects" ref={ref} className="section-shell relative overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background via-background/90 to-transparent" />
+      <div className="absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+      <div className="absolute -right-24 bottom-1/3 h-72 w-72 rounded-full bg-sky-500/10 blur-3xl" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="max-w-5xl mx-auto"
+          className="mx-auto max-w-6xl"
         >
-          <motion.div className="text-center mb-16">
+          <motion.div className="mb-12 text-center">
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
               animate={inView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
-              className="inline-block mb-2"
+              className="inline-block mb-3"
             >
-              <span className="inline-block px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full text-sm font-medium">
-                My Work
-              </span>
+              <span className="section-kicker">My Work</span>
             </motion.div>
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Projects</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-indigo-600 mx-auto mb-4"></div>
+            <h2 className="section-title text-foreground">Projects</h2>
+            <p className="section-lead mx-auto mt-4 max-w-2xl">
+              A curated selection of product work, systems projects, and experiments with real-world constraints.
+            </p>
+
+            <div className="mt-6 inline-flex rounded-full border border-neutral-800 bg-black p-1 shadow-sm">
+              {[
+                { key: "self", label: "Self" },
+                { key: "hackathon", label: "Hackathon" },
+              ].map((tab) => (
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveTab(tab.key as "self" | "hackathon")}
+                  className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                    activeTab === tab.key
+                      ? "text-white"
+                      : "text-neutral-400 hover:text-neutral-200"
+                  }`}
+                >
+                  {tab.label}
+                  {activeTab === tab.key && (
+                    <motion.span
+                      layoutId="projectTabActive"
+                      className="absolute inset-0 -z-10 rounded-full bg-neutral-800 shadow-sm"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
           </motion.div>
 
           <motion.div
@@ -122,71 +178,60 @@ export default function Projects() {
             animate={inView ? "visible" : "hidden"}
             className="space-y-16"
           >
-            {projects.map((project, index) => (
+            {visibleProjects.map((project, index) => (
               <motion.div
-                key={index}
+                key={project.title}
                 variants={itemVariants}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-xl shadow-purple-500/5 dark:shadow-none border border-gray-100 dark:border-gray-700 overflow-hidden hover-lift"
+                className="panel-soft overflow-hidden rounded-[1.5rem] hover-lift"
               >
                 <div className="md:grid md:grid-cols-2 gap-0">
                   <div className="relative overflow-hidden group">
-                    <motion.div
-                      initial={{ scale: 1.1, opacity: 0.8 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.5 }}
-                      className="h-full"
-                    >
-                      {/* YouTube Thumbnail */}
-                      <Link href={project.demoVideo} target="_blank" rel="noopener noreferrer">
-                        <div className="relative aspect-video w-full">
-                          <img
-                            src={getYouTubeThumbnailUrl(project.demoVideo) || "/placeholder.svg"}
-                            alt={`${project.title} video thumbnail`}
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                              // If thumbnail fails to load, use a placeholder
-                              const target = e.target as HTMLImageElement
-                              target.src = "/placeholder.svg?height=400&width=600"
-                              console.error(`Failed to load thumbnail for ${project.title}`)
-                            }}
-                          />
-                          {/* Play button overlay */}
-                          <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
-                              <Play className="h-8 w-8 text-purple-600 ml-1" />
-                            </div>
+                    <Link href={project.demoVideo} target="_blank" rel="noopener noreferrer">
+                      <div className="relative aspect-video w-full">
+                        <img
+                          src={getYouTubeThumbnailUrl(project.demoVideo) || "/placeholder.svg"}
+                          alt={`${project.title} video thumbnail`}
+                          className="h-full w-full object-cover"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement
+                            target.src = "/placeholder.svg?height=400&width=600"
+                          }}
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-slate-950/20 opacity-0 transition-opacity group-hover:opacity-100">
+                          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90">
+                            <Play className="ml-1 h-7 w-7 text-foreground" />
                           </div>
-                        </div>
-                      </Link>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
-                        <div>
-                          <div className="flex items-center text-white/80 text-sm mb-2">
-                            <Calendar className="h-4 w-4 mr-2" />
-                            {project.date}
-                          </div>
-                          <h3 className="text-2xl font-bold text-white">{project.title}</h3>
                         </div>
                       </div>
-                    </motion.div>
+                    </Link>
+                    <div className="absolute inset-0 flex items-end bg-gradient-to-t from-slate-950/70 to-transparent p-6">
+                      <div>
+                        <div className="mb-2 flex items-center text-sm text-white/80">
+                          <Calendar className="mr-2 h-4 w-4" />
+                          {project.date}
+                        </div>
+                        <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="p-6 md:p-8">
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="mb-4 flex flex-wrap gap-2">
                       {project.technologies.map((tech, techIndex) => (
                         <motion.span
                           key={techIndex}
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.3, delay: 0.1 + techIndex * 0.05 }}
-                          className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium"
+                          className="rounded-full border border-border bg-muted px-3 py-1 text-sm font-medium text-foreground"
                         >
                           {tech}
                         </motion.span>
                       ))}
                     </div>
 
-                    <p className="text-gray-600 dark:text-gray-300 mb-6">{project.description}</p>
+                    <p className="mb-6 text-muted-foreground">{project.description}</p>
 
                     <div className="flex flex-wrap gap-4">
                       {project.demoVideo && (
@@ -221,7 +266,7 @@ export default function Projects() {
             transition={{ duration: 0.5, delay: 0.8 }}
             className="mt-12 text-center"
           >
-            <Button asChild variant="ghost" className="text-purple-600 dark:text-purple-400 group">
+            <Button asChild variant="ghost" className="group text-primary">
               <Link href="https://github.com/NASA12345" target="_blank" rel="noopener noreferrer">
                 View More Projects on GitHub
                 <Github className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

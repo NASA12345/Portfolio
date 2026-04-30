@@ -122,13 +122,18 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-glass shadow-md py-2" : "bg-transparent py-4"
+        scrolled ? "bg-background/85 shadow-sm backdrop-blur-xl py-2" : "bg-background/65 backdrop-blur-xl py-4"
       }`}
     >
-      <div className="container mx-auto px-4 flex items-center justify-between">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-          <button onClick={() => scrollToSection("home")} className="text-xl font-bold text-gray-900 dark:text-white">
-            Nayan<span className="text-purple-600">.</span>
+          <button onClick={() => scrollToSection("home")} className="flex items-center gap-3 text-left">
+            <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-border bg-card text-sm font-semibold text-foreground shadow-sm">
+              NJ
+            </span>
+            <span className="text-lg font-semibold tracking-tight text-foreground">
+              Nayan <span className="text-primary">Jindal</span>
+            </span>
           </button>
         </motion.div>
 
@@ -137,31 +142,31 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="hidden md:flex items-center space-x-6"
+          className="hidden items-center gap-1 rounded-full border border-border bg-card/70 p-1.5 shadow-sm backdrop-blur-xl md:flex"
         >
           {navLinks.map((link, index) => (
             <button
               key={link.name}
               onClick={() => scrollToSection(link.href.substring(1))}
-              className={`text-sm font-medium transition-colors relative ${
+              className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 activeSection === link.href.substring(1)
-                  ? "text-purple-600 dark:text-purple-400"
-                  : "text-gray-700 hover:text-purple-600 dark:text-gray-200 dark:hover:text-purple-400"
+                  ? "bg-foreground text-background shadow-sm"
+                  : "text-muted-foreground hover:bg-accent hover:text-foreground"
               }`}
             >
               {link.name}
               {activeSection === link.href.substring(1) && (
                 <motion.span
-                  layoutId="activeSection"
-                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-purple-600 dark:bg-purple-400"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  layoutId="desktopActiveNav"
+                  className="absolute inset-0 -z-10 rounded-full bg-foreground shadow-sm"
+                  transition={{ type: "spring", stiffness: 380, damping: 28 }}
                 />
               )}
             </button>
           ))}
         </motion.nav>
 
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center gap-3">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -173,7 +178,7 @@ export default function Navbar() {
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               aria-label="Toggle theme"
-              className="rounded-full border-purple-200 dark:border-gray-700"
+              className="rounded-full border-border bg-card/80"
             >
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
@@ -199,7 +204,7 @@ export default function Navbar() {
             <Button
               variant="ghost"
               size="icon"
-              className="rounded-full"
+              className="rounded-full border border-border bg-card/80"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -228,7 +233,7 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm"
+              className="fixed inset-0 bg-slate-950/30 backdrop-blur-sm"
               onClick={() => setIsMenuOpen(false)}
             />
             
@@ -238,7 +243,7 @@ export default function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-glass shadow-lg overflow-hidden relative z-10"
+              className="md:hidden bg-glass shadow-2xl overflow-hidden relative z-10 border-b border-border"
             >
               <nav className="flex flex-col py-4">
                 {navLinks.map((link, index) => (
@@ -256,8 +261,8 @@ export default function Navbar() {
                       }}
                       className={`px-6 py-3 text-sm font-medium block transition-colors w-full text-left touch-manipulation ${
                         activeSection === link.href.substring(1)
-                          ? "text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-gray-800"
-                          : "text-gray-700 hover:text-purple-600 hover:bg-gray-50 dark:text-gray-200 dark:hover:text-purple-400 dark:hover:bg-gray-800"
+                          ? "text-foreground bg-muted"
+                          : "text-muted-foreground hover:text-foreground hover:bg-accent/70"
                       }`}
                     >
                       {link.name}
