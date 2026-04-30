@@ -37,6 +37,15 @@ const projects = [
     date: "Mar 2026 - Apr 2026",
   },
   {
+    title: "UDAAN-AI",
+    description:
+      "BlackBox is a real-time shipment monitoring platform that combines ESP32 BLE sensor data, driver GPS tracking, and Firestore live sync to generate instant risk alerts and tamper-evident trip records for insurance operations.",
+    technologies: ["React.js", "Node.js", "Express.js", "MySQL"],
+    demoVideo: "https://www.youtube.com/watch?v=Wvbfp_NW3Bc",
+    githubLink: "https://github.com/NASA12345/Udaan-AI",
+    date: "Sept 2025 - Oct 2025",
+  },
+  {
     title: "Sudhaar Web App",
     description:
       "A garbage complaint management and scrap selling platform using Firebase and Teachable Machine for AI image validation. Integrated Google Auth, LocationIQ for geolocation, and a reward system to promote sustainability. Enabled real-time notifications via Email.js and optimized user interaction using Next.js and Tailwind CSS.",
