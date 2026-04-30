@@ -33,7 +33,7 @@ const education = [
 
 export default function Education() {
   const [ref, inView] = useInView({
-    triggerOnce: false,
+    triggerOnce: true,
     threshold: 0.1,
   })
 
@@ -94,9 +94,6 @@ export default function Education() {
                     <div className="flex h-16 w-16 items-center justify-center rounded-full border border-primary/30 bg-primary/10 shadow-sm">
                       <span className="text-lg font-bold text-primary">{edu.year}</span>
                     </div>
-                    {index !== education.length - 1 && (
-                      <div className="hidden md:block w-0.5 h-16 bg-gradient-to-b from-primary/70 to-sky-500/70 mx-auto mt-2"></div>
-                    )}
                   </div>
 
                   {/* Content */}

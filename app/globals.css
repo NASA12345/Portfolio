@@ -252,6 +252,7 @@
 }
 
 .timeline-rail::before {
+  display: none;
   content: "";
   position: absolute;
   left: 31px;
@@ -259,6 +260,12 @@
   bottom: 2rem;
   width: 1px;
   background: linear-gradient(to bottom, transparent, hsl(var(--border)), transparent);
+}
+
+@media (min-width: 768px) {
+  .timeline-rail::before {
+    display: block;
+  }
 }
 
 .card-3d {

@@ -32,7 +32,7 @@ const experiences = [
 
 export default function Experience() {
   const [ref, inView] = useInView({
-    triggerOnce: false,
+    triggerOnce: true,
     threshold: 0.1,
   })
 
@@ -100,9 +100,6 @@ export default function Experience() {
                         {exp.year}
                       </span>
                     </div>
-                    {index !== experiences.length - 1 && (
-                      <div className="hidden md:block w-0.5 h-20 bg-gradient-to-b from-primary/70 to-sky-500/70 mx-auto mt-2"></div>
-                    )}
                   </div>
 
                   {/* Content */}

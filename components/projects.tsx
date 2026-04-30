@@ -145,7 +145,7 @@ export default function Projects() {
               A curated selection of product work, systems projects, and experiments with real-world constraints.
             </p>
 
-            <div className="mt-6 inline-flex rounded-full border border-neutral-800 p-1 shadow-sm">
+            <div className="mt-6 inline-flex rounded-full border border-neutral-800 p-1 shadow-sm dark:bg-black dark:border-white">
               {[
                 { key: "self", label: "Self" },
                 { key: "hackathon", label: "Hackathon" },
@@ -155,15 +155,15 @@ export default function Projects() {
                   onClick={() => setActiveTab(tab.key as "self" | "hackathon")}
                   className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                     activeTab === tab.key
-                      ? "text-white"
-                      : "text-black hover:text-foreground/80"
+                      ? "text-white dark:text-white"
+                      : "text-black dark:text-neutral-400 hover:text-foreground/80 dark:hover:text-neutral-200"
                   }`}
                 >
                   {tab.label}
                   {activeTab === tab.key && (
                     <motion.span
                       layoutId="projectTabActive"
-                      className="absolute inset-0 -z-10 rounded-full bg-neutral-800 shadow-sm"
+                      className="absolute inset-0 -z-10 rounded-full bg-neutral-800 dark:bg-white shadow-sm"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
