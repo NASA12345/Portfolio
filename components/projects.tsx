@@ -53,7 +53,7 @@ const projects = [
     title: "Black Box : IoT Smart Cargo Tracker",
     description:
       "BlackBox is a real-time shipment monitoring platform that combines ESP32 BLE sensor data, driver GPS tracking, and Firestore live sync to generate instant risk alerts and tamper-evident trip records for insurance operations.",
-    technologies: ["React.js", "Firebase", "ESP32 Microcontroller"],
+    technologies: ["React.js", "Node.js", "Express.js", "Firebase", "ESP32 Microcontroller"],
     demoVideo: "https://www.youtube.com/watch?v=NZF8RdI5t04",
     githubLink: "https://github.com/NASA12345/BlackBox-IoT/tree/main",
     date: "Mar 2026 - Apr 2026",
