@@ -160,7 +160,7 @@ export default function About() {
                       <div>
                         <h3 className="mb-2 text-lg font-semibold text-foreground">Experience</h3>
                         <p className="text-sm text-muted-foreground">
-                          Currently working as Software Developer Intern at Mahindra Logistics, developing real-time GPS
+                          Previously worked as Software Developer Intern at Mahindra Logistics, developing real-time GPS
                           tracking systems and scalable data pipelines.
                         </p>
                         <Link href="#experience" className="mt-2 inline-flex items-center text-sm font-medium text-primary hover:underline">
