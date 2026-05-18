@@ -9,7 +9,6 @@ const allSkills = [
   "HTML",
   "CSS",
   "JavaScript",
-  "TypeScript",
   "SQL",
   "React JS",
   "Next JS",
