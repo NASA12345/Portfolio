@@ -7,6 +7,17 @@ import Link from "next/link"
 
 const experiences = [
   {
+    position: "Software Engineer Intern",
+    company: "Microsoft",
+    duration: "May 2026 – Jul 2026",
+    year: "2026",
+    location: "Pune, Maharashtra",
+    description:
+      "Contributed to the Dragon Copilot backend by delivering new backend functionalities, improving test coverage, validating end-to-end workflows, and resolving software defects using C#, .NET, and Azure DevOps.",
+    link: "https://www.microsoft.com/en-in",
+    skills: ["C#", ".NET", "Azure DevOps", "MySQL"],
+  },
+  {
     position: "Software Developer Intern",
     company: "Mahindra Logistics",
     duration: "Apr 2025 – Jun 2025",

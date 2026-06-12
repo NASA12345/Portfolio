@@ -131,7 +131,7 @@ export default function About() {
                       <div>
                         <h3 className="mb-2 text-lg font-semibold text-foreground">Technical Skills</h3>
                         <div className="flex flex-wrap gap-2">
-                          {["C++", "Python", "JavaScript", "React", "Next.js", "Express.js", "MySQL"].map(
+                          {["C++", "C#", "Python", "JavaScript", "React", "Next.js", "Express.js", "MySQL"].map(
                             (skill, index) => (
                               <span
                                 key={index}
@@ -160,8 +160,7 @@ export default function About() {
                       <div>
                         <h3 className="mb-2 text-lg font-semibold text-foreground">Experience</h3>
                         <p className="text-sm text-muted-foreground">
-                          Previously worked as Software Developer Intern at Mahindra Logistics, developing real-time GPS
-                          tracking systems and scalable data pipelines.
+                          Currently a Software Engineer Intern at Microsoft, contributing to Dragon Copilot by developing backend features using C#, .NET, Azure DevOps, and cloud technologies.
                         </p>
                         <Link href="#experience" className="mt-2 inline-flex items-center text-sm font-medium text-primary hover:underline">
                           View details <ExternalLink className="ml-1 h-3 w-3" />

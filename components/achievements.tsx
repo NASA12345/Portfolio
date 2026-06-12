@@ -21,7 +21,7 @@ const achievements = [
   },
   {
     title: "Thales GenTech India Hackathon 2025",
-    description: "Qualified for finals at Thales GenTech India Hackathon 2025.",
+    description: "Finalist Thales GenTech India Hackathon 2025.",
     icon: <Trophy className="h-6 w-6" />,
     label: "Hackathon",
     link: "",
