@@ -26,6 +26,7 @@ const allSkills = [
   "VSCode",
   "VS",
   "Azure DevOps",
+  "Microsoft Azure",
   "Bruno",
   "Sublime Text",
   "Docker",

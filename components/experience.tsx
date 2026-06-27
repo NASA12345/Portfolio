@@ -15,7 +15,7 @@ const experiences = [
     description:
       "Contributed to the Dragon Copilot backend by delivering new backend functionalities, improving test coverage, validating end-to-end workflows, and resolving software defects using C#, .NET, and Azure DevOps.",
     link: "https://www.microsoft.com/en-in",
-    skills: ["C#", ".NET", "Azure DevOps", "MySQL"],
+    skills: ["C#", ".NET", "Azure DevOps", "Microsoft Azure", "MySQL"],
   },
   {
     position: "Software Developer Intern",
