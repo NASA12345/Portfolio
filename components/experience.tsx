@@ -13,7 +13,7 @@ const experiences = [
     year: "2026",
     location: "Pune, Maharashtra",
     description:
-      "Contributed to the Dragon Copilot backend by delivering new backend functionalities, improving test coverage, validating end-to-end workflows, and resolving software defects using C#, .NET, Azure DevOps and Microsoft Azure.",
+      "Contributed to Nursing Dragon Copilot backend by delivering new backend functionalities, improving test coverage, validating end-to-end workflows, and resolving software defects using C#, .NET, Azure DevOps and Microsoft Azure.",
     link: "https://www.microsoft.com/en-in",
     skills: ["C#", ".NET", "Azure DevOps", "Microsoft Azure", "MySQL"],
   },

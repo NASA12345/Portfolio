@@ -160,7 +160,7 @@ export default function About() {
                       <div>
                         <h3 className="mb-2 text-lg font-semibold text-foreground">Experience</h3>
                         <p className="text-sm text-muted-foreground">
-                          Currently a Software Engineer Intern at Microsoft, contributing to Dragon Copilot by developing backend features using C#, .NET, Azure DevOps, and cloud technologies.
+                          Previously a Software Engineer Intern at Microsoft, contributing to Nursing Dragon Copilot by developing backend features using C#, .NET, Azure DevOps, and cloud technologies.
                         </p>
                         <Link href="#experience" className="mt-2 inline-flex items-center text-sm font-medium text-primary hover:underline">
                           View details <ExternalLink className="ml-1 h-3 w-3" />
