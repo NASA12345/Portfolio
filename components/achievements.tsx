@@ -34,6 +34,13 @@ const achievements = [
     link: "",
   },
   {
+    title: "Flipkart GRiD 8.0",
+    description: "Semi-finalist at Flipkart GRiD 8.0.",
+    icon: <Code className="h-6 w-6" />,
+    label: "Hackathon",
+    link: "",
+  },
+  {
     title: "Amazon ML Summer School 2025",
     description: "Successfully shortlisted for Amazon ML Summer School 2025.",
     icon: <Award className="h-6 w-6" />,
