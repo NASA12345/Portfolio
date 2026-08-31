@@ -1,6 +1,6 @@
 "use client"
 
-import { Github, Linkedin } from "lucide-react"
+import { Github, Linkedin, Twitter } from "lucide-react"
 
 export default function Footer() {
   // Function to handle smooth scrolling
@@ -45,6 +45,15 @@ export default function Footer() {
             >
               <Linkedin className="h-4 w-4" />
               <span className="sr-only">LinkedIn</span>
+            </a>
+            <a
+              href="https://x.com/jindal__nayan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors hover:border-foreground hover:text-foreground"
+            >
+              <Twitter className="h-4 w-4" />
+              <span className="sr-only">Twitter</span>
             </a>
           </div>
 

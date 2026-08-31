@@ -48,6 +48,13 @@ const achievements = [
     link: "",
   },
   {
+    title: "EricssonEdge Academia 3.0",
+    description: "Successfully shortlisted for EricssonEdge Academia 3.0.",
+    icon: <Medal className="h-6 w-6" />,
+    label: "ML",
+    link: "",
+  },
+  {
     title: "University Merit Scholarship",
     description: "Awarded for securing a position in the top 5% of students in the department during 2023–24.",
     icon: <Trophy className="h-6 w-6" />,

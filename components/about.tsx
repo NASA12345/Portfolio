@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Mail, MapPin, User, Code, Briefcase, ExternalLink, Github, Linkedin } from "lucide-react"
+import { Mail, MapPin, User, Code, Briefcase, ExternalLink, Github, Linkedin, Twitter } from "lucide-react"
 import Link from "next/link"
 
 export default function About() {
@@ -115,6 +115,15 @@ export default function About() {
                   >
                     <Linkedin className="h-5 w-5" />
                     <span className="sr-only">LinkedIn</span>
+                  </Link>
+                  <Link
+                    href="https://x.com/jindal__nayan"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full border border-border bg-background/70 p-2 text-muted-foreground transition-colors hover:border-primary/30 hover:text-primary"
+                  >
+                    <Twitter className="h-5 w-5" />
+                    <span className="sr-only">Twitter</span>
                   </Link>
                 </div>
               </div>
